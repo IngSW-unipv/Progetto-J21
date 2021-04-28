@@ -4,24 +4,34 @@ import java.util.*;
 
 public class TicketCatalog {
 
-	private List<TicketDescription> catalog;
+	private List<TravelDocument> catalog;
 	
 	public TicketCatalog() {
 		catalog = new ArrayList<>();
+		loadTravelDocuments();
 	}
 	
-	public TicketDescription getTicketDescription(int type) {
+	public TravelDocument getSelectedTravelDocument(int type) {
 		return catalog.get(type);
 	}
 	
-	public void addTicketDescription(TicketDescription ticket) {
+	private void loadTravelDocuments() {
+		TravelDocument ticket;
+		
+		ticket = new SingleRideTicket();
+		catalog.add(ticket);
+		
+		ticket = new Carnet();
+		catalog.add(ticket);
+		
+		ticket = new BusPass();
 		catalog.add(ticket);
 	}
 	
 	public void printTicketCatalog() {
 		System.out.println("Catalogo dei biglietti acquistabili:\n");
-		for (TicketDescription description : catalog) {
-			System.out.println(description.getName() + " , " + description.getPrice() + " €");
+		for (TravelDocument tickets : catalog) {
+			System.out.println(tickets.getType() + " - " + tickets.getDescription() + " , " + tickets.getPrice() + " €");
 		}
 	}
 }

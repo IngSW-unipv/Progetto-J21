@@ -1,26 +1,25 @@
 package it.unipv.ingsw.electronicticketingsystem.util.ticket;
 
-public class TicketDescription {
-	
+public abstract class TravelDocument {
+
 	private int type;
-	private TicketName name;
+	private String description;
 	private double price;
 	
-	public TicketDescription(int type, TicketName name, double price) {
+	public TravelDocument(int type, String description, double price) {
 		this.type = type;
-		this.name = name;
+		this.description = description;
 		this.price = price;
-		
 	}
 
 	public int getType() {
 		return type;
 	}
-	
-	public TicketName getName() {
-		return name;
+
+	public String getDescription() {
+		return description;
 	}
-	
+
 	public double getPrice() {
 		return price;
 	}
