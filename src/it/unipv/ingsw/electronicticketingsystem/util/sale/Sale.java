@@ -33,4 +33,9 @@ public class Sale {
 		}
 		return t;
 	}
+	
+	public void makePayment(double a) {
+		Payment p=new Payment(a);
+		//p sarà poi usato per salvare i relativi dati
+	}
 }
