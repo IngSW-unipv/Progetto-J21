@@ -29,9 +29,9 @@ public class TicketCatalog {
 	}
 	
 	public void printTicketCatalog() {
-		System.out.println("Catalogo dei biglietti acquistabili:\n");
+		System.out.println("Purchasable tickets' catalog:\n");
 		for (TravelDocument tickets : catalog) {
-			System.out.println(tickets.getType() + " - " + tickets.getDescription() + " , " + tickets.getPrice() + " €");
+			System.out.println(tickets.getType() + " - " + tickets.getDescription() + " -> " + tickets.getPrice() + " €");
 		}
 	}
 }
