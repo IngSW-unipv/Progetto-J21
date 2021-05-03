@@ -6,13 +6,13 @@ import java.util.List;
 public class Sale {
 	private boolean completed;
 	private List<SaleLineItem> items;
-	private int quantity; // provvisorio
+	private int quantity; // provvisorio, da togliere
 	private double total; //meglio se viene recuperato da TicketDescription 
 	
 	public Sale() {
 		this.completed=false; //posizione aperta appena viene invocato
 		this.items=new ArrayList<>();
-		this.quantity=0;
+		//this.quantity=0;
 	}
 	
 	public void addSale(double tipo) {
