@@ -41,7 +41,7 @@ public class TicketMachineUI {
 							tm.enterItem(type,qty);
 						}
 					}while(type !=9);
-					System.out.println("The total is"+ tm.getTotal());
+					System.out.println("The total is: "+ tm.getTotal());
 					System.out.println("Please, enter cash");
 					double am=s.nextDouble();
 					tm.makePayment(am);

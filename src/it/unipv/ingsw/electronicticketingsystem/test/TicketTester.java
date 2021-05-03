@@ -12,13 +12,11 @@ public class TicketTester {
 		Scanner s=new Scanner(System.in);
 		TicketCatalog catalog = new TicketCatalog();
 		
+
 		TicketMachineUI ui=new TicketMachineUI(s);
 		
 		
 		ui.start(catalog);
 		
-		
-		
 	}
-
 }
