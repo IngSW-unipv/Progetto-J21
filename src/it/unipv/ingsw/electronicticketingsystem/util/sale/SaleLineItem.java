@@ -5,6 +5,7 @@ import java.util.List;
 
 public class SaleLineItem {
 	private double price;
+	private String id;
 
 	
 	public SaleLineItem(double p) {

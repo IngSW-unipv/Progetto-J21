@@ -15,7 +15,7 @@ public class Sale {
 		//this.quantity=0;
 	}
 	
-	public void addSale(double tipo) {
+	public void enterItem(double tipo) {
 		//double tipo da cambiare, sostituire con 'TicketType t' 
 		SaleLineItem s=new SaleLineItem(tipo); 
 		items.add(s);
