@@ -4,19 +4,19 @@ public class TicketCatalogProvvisorio {
 	
 	//inserire qui tutti i dati del catalogo ...
 	//
-	private final String bpDescription="Bus Pass";
-	private final double bpPrice=12.00;
-	private final String srDescription="Single Ride Ticket";
-	private final double srPrice=1.40;
-	private final String cDescription="Carnet";
-	private final double cPrice=35.50;
+	private final static String bpDescription="Bus Pass";
+	private final static double bpPrice=12.00;
+	private final static String srDescription="Single Ride Ticket";
+	private final static double srPrice=1.40;
+	private final static String cDescription="Carnet";
+	private final static double cPrice=35.50;
 	
 	
 	public TicketCatalogProvvisorio() {
 		
 	}
 	
-	public double getPrice(TicketType type) {
+	public static double getPrice(TicketType type) {
 		switch(type) {
 		case BUSSPASS: return bpPrice;
 		case SINGLE: return srPrice;
@@ -26,7 +26,7 @@ public class TicketCatalogProvvisorio {
 		}
 	}
 	
-	public String getDescription(TicketType type) {
+	public static String getDescription(TicketType type) {
 		switch(type) {
 		case BUSSPASS: return bpDescription;
 		case SINGLE: return srDescription;
@@ -36,7 +36,7 @@ public class TicketCatalogProvvisorio {
 		}
 	}
 	
-	public int getTime(TicketType type) {
+	public static int getTime(TicketType type) {
 		//invocando questo metodo viene restituita la durata dei biglietti 
 		//durata in ore
 		switch(type) {
@@ -44,7 +44,7 @@ public class TicketCatalogProvvisorio {
 		}
 	}
 	
-	public int getShots(TicketType type) {
+	public static int getShots(TicketType type) {
 		//invocando questo metodo viene restituito il numero di volte che si può riutilizzare un singolo biglietto
 		switch(type) {
 		case CARNET: return 10;

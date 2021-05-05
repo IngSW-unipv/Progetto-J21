@@ -3,6 +3,8 @@ package it.unipv.ingsw.electronicticketingsystem.util.sale;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.unipv.ingsw.electronicticketingsystem.util.ticket.TicketType;
+
 public class Sale {
 	private boolean completed;
 	private List<SaleLineItem> items;
@@ -15,23 +17,23 @@ public class Sale {
 		//this.quantity=0;
 	}
 	
-	public void enterItem(double tipo) {
-		//double tipo da cambiare, sostituire con 'TicketType t' 
-		SaleLineItem s=new SaleLineItem(tipo); 
+	public void enterItem(TicketType type) {
+		SaleLineItem s=new SaleLineItem(type); 
 		items.add(s);
 		this.quantity++; 
 	}
 	
 	public void setCompleted() {
 		this.completed=true;
+		// inoltrare tutto a base dati...
 	}
 	
 	public double getTotal() {
-		double t=0;
+		double total=0;
 		for(SaleLineItem i: items) {
-			t=+i.getSubTotal();			
+			total=+i.getSubTotal();			
 		}
-		return t;
+		return total;
 	}
 	
 	public void makePayment(double a) {
