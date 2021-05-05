@@ -4,14 +4,14 @@ import java.util.*;
 
 public class TicketCatalog {
 
-	private List<TravelDocument> catalog;
+	private static List<TravelDocument> catalog;
 	
 	public TicketCatalog() {
 		catalog = new ArrayList<>();
 		loadTravelDocuments();
 	}
 	
-	public TravelDocument getSelectedTravelDocument(int type) {
+	public static TravelDocument getSelectedTravelDocument(int type) {
 		return catalog.get(type);
 	}
 	
