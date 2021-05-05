@@ -17,7 +17,7 @@ public class Sale {
 		//this.quantity=0;
 	}
 	
-	public void enterItem(TicketType type) {
+	public void enterItem(int type) {
 		SaleLineItem s=new SaleLineItem(type); 
 		items.add(s);
 		this.quantity++; 
