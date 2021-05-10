@@ -12,7 +12,15 @@ public class TicketCatalog {
 	}
 	
 	public static TravelDocument getSelectedTravelDocument(int type) {
-		return catalog.get(type);
+		int catalogIndex = 0;
+		for (TravelDocument tickets : catalog) {
+			if (tickets.getType() == type) {
+				catalogIndex = catalog.indexOf(tickets);
+			} else {
+				catalogIndex = -1;
+			}
+		}
+		return catalog.get(catalogIndex);
 	}
 	
 	private void loadTravelDocuments() {
