@@ -16,8 +16,6 @@ public class TicketCatalog {
 		for (TravelDocument tickets : catalog) {
 			if (tickets.getType() == type) {
 				catalogIndex = catalog.indexOf(tickets);
-			} else {
-				catalogIndex = -1;
 			}
 		}
 		return catalog.get(catalogIndex);
