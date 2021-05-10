@@ -27,9 +27,8 @@ public class Sale {
 	}
 	
 	public double getTotal() {
-		double total=0;
 		for(SaleLineItem i: items) {
-			total=+i.getSubTotal();			
+			total+=i.getSubTotal();			
 		}
 		return total;
 	}

@@ -11,7 +11,7 @@ public class TicketMachine {
 	}
 	
 	public void enterItem(int type,int qty) {
-		//metodo sale per aggiunta
+		s.enterItem(type, qty);
 	}
 	
 	public double getTotal() {
