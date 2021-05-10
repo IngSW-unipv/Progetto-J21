@@ -18,9 +18,13 @@ public class TicketMachine {
 		return s.getTotal();
 	}
 	
-	public void makePayment(double am) {
-		s.makePayment(am);
+	public void makePayment(double cs) {
+		 s.makePayment(cs);
 	}
+	
+	public double getChange() {
+		return s.getChange();
+		}
 	
 	public void endSale() {
 		s.setCompleted();

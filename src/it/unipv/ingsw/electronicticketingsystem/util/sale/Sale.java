@@ -7,7 +7,8 @@ import java.util.*;
 public class Sale {
 	private boolean completed;
 	private List<SaleLineItem> items;
-	private double total; //meglio se viene recuperato da TicketDescription 
+	private double total; //meglio se viene recuperato da TicketDescription
+	private Payment p;
 	
 	public Sale() {
 		this.completed=false; //posizione aperta appena viene invocato
@@ -33,8 +34,13 @@ public class Sale {
 		return total;
 	}
 	
-	public void makePayment(double a) {
-		Payment p=new Payment(a);
+	public void makePayment(double cs) {
+		p=new Payment(total);
+		p.makePayment(cs);
 		//p sarà poi usato per salvare i relativi dati
+	}
+	
+	public double getChange() {
+		return p.getChange();
 	}
 }
