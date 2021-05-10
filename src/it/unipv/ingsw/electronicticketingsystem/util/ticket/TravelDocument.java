@@ -6,12 +6,14 @@ public abstract class TravelDocument {
 	private String description;
 	private double price;
 	private String TicketID;
+	private boolean validated;
 	
 	public TravelDocument(int type, String description, double price) {
 		this.type = type;
 		this.description = description;
 		this.price = price;
 		this.TicketID = generateTicketID();
+		this.validated = false;
 	}
 
 	public int getType() {
@@ -28,6 +30,10 @@ public abstract class TravelDocument {
 	
 	public String getTicketID() {
 		return TicketID;
+	}
+	
+	public void validateTravelDocument() {
+		this.validated = true;
 	}
 	
 	public String generateTicketID() {
