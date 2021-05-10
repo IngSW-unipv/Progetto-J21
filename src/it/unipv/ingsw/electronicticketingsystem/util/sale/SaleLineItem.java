@@ -1,12 +1,7 @@
 package it.unipv.ingsw.electronicticketingsystem.util.sale;
 
-import java.util.ArrayList;
-import java.util.List;
+import it.unipv.ingsw.electronicticketingsystem.util.ticket.*;
 
-import it.unipv.ingsw.electronicticketingsystem.util.ticket.TicketCatalog;
-import it.unipv.ingsw.electronicticketingsystem.util.ticket.TicketCatalogProvvisorio;
-import it.unipv.ingsw.electronicticketingsystem.util.ticket.TicketType;
-import it.unipv.ingsw.electronicticketingsystem.util.ticket.TravelDocument;
 
 public class SaleLineItem {
 

@@ -1,26 +1,24 @@
 package it.unipv.ingsw.electronicticketingsystem.util.sale;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import it.unipv.ingsw.electronicticketingsystem.util.ticket.TicketType;
+
 
 public class Sale {
 	private boolean completed;
 	private List<SaleLineItem> items;
-	private int quantity; // provvisorio, da togliere
 	private double total; //meglio se viene recuperato da TicketDescription 
 	
 	public Sale() {
 		this.completed=false; //posizione aperta appena viene invocato
 		this.items=new ArrayList<>();
-		//this.quantity=0;
+		this.total=0;
 	}
 	
-	public void enterItem(int type) {
-		SaleLineItem s=new SaleLineItem(type); 
-		items.add(s);
-		this.quantity++; 
+	public void enterItem(int type,int qty) {
+		for(int i=0;i<qty;i++) {
+			items.add(new SaleLineItem(type));
+		}	 
 	}
 	
 	public void setCompleted() {
