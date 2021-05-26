@@ -27,4 +27,8 @@ public class SaleLineItem {
 	public String getTicketID() {
 		return ticketID;
 	}
+	
+	public long getTime() {
+		return ticket.getTimeToAdd();
+	}
 }

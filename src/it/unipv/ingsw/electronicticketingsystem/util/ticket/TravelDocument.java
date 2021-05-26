@@ -5,6 +5,7 @@ public abstract class TravelDocument {
 	private int type;
 	private String description;
 	private double price;
+	protected long timeToAdd; //uso di protected per non dover modificare il costruttore
 	
 	public TravelDocument(int type, String description, double price) {
 		this.type = type;
@@ -22,6 +23,10 @@ public abstract class TravelDocument {
 
 	public double getPrice() {
 		return price;
+	}
+	
+	public long getTimeToAdd() {
+		return timeToAdd;
 	}
 	
 	
