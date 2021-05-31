@@ -1,4 +1,4 @@
-package it.unipv.ingsw.electronicticketingsystem.util.ticket;
+package electronicticketingsystem.util.ticket;
 
 public class BusPass extends TravelDocument {
 

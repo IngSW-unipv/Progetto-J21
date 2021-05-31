@@ -1,7 +1,7 @@
-package it.unipv.ingsw.electronicticketingsystem.controller;
+package electronicticketingsystem.controller;
 import java.util.*;
 
-import it.unipv.ingsw.electronicticketingsystem.util.sale.Sale;
+import electronicticketingsystem.util.sale.Sale;
 
 public class TicketMachine {
 	Sale s;

@@ -1,8 +1,8 @@
-package it.unipv.ingsw.electronicticketingsystem.util.validation;
+package electronicticketingsystem.util.validation;
 
 import java.time.LocalTime;
 
-import it.unipv.ingsw.electronicticketingsystem.util.sale.*;
+import electronicticketingsystem.util.sale.*;
 
 public class Validation {
 	private SaleLineItem ticket;

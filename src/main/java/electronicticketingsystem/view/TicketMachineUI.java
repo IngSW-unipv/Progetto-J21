@@ -1,10 +1,10 @@
-package it.unipv.ingsw.electronicticketingsystem.view;
+package electronicticketingsystem.view;
 
 import java.util.*;
 
 
-import it.unipv.ingsw.electronicticketingsystem.controller.TicketMachine;
-import it.unipv.ingsw.electronicticketingsystem.util.ticket.TicketCatalog;
+import electronicticketingsystem.controller.TicketMachine;
+import electronicticketingsystem.util.ticket.TicketCatalog;
 
 public class TicketMachineUI {
 	

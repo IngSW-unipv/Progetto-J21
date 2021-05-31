@@ -1,6 +1,6 @@
-package it.unipv.ingsw.electronicticketingsystem.util.sale;
+package electronicticketingsystem.util.sale;
 
-import it.unipv.ingsw.electronicticketingsystem.util.ticket.*;
+import electronicticketingsystem.util.ticket.*;
 
 
 public class SaleLineItem {

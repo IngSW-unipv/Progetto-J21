@@ -1,9 +1,9 @@
-package it.unipv.ingsw.electronicticketingsystem.test;
+package electronicticketingsystem.test;
 
 import java.util.Scanner;
 
-import it.unipv.ingsw.electronicticketingsystem.util.ticket.*;
-import it.unipv.ingsw.electronicticketingsystem.view.TicketMachineUI;
+import electronicticketingsystem.util.ticket.*;
+import electronicticketingsystem.view.TicketMachineUI;
 
 public class TicketTester {
 
@@ -16,7 +16,8 @@ public class TicketTester {
 		TicketMachineUI ui=new TicketMachineUI(s);
 		
 		
-		ui.start(catalog);
+		ui.start(catalog); 
 		
 	}
 }
+ 

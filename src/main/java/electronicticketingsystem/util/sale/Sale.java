@@ -1,4 +1,4 @@
-package it.unipv.ingsw.electronicticketingsystem.util.sale;
+package electronicticketingsystem.util.sale;
 
 import java.util.*;
 
