@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+ <html lang = "en">
+ 
+ <head> 
+ 	<!-- Titolo della scheda -->
+ 	<title> Electronic Ticketing System </title>
+ 	
+ 	<!-- Meta tags -->
+ 	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="web/statics/stylesheet.css">
+	
+	<style>
+	h2,h3,h4,b {
+    	color: #4682B4;
+	}
+    
+	.row.content {
+      	height: 1500px
+	}
+	
+    /* Altezza e colore barra di navigazione */
+	.sidenav {
+        background-color: #F1F1F1;
+      	height: 100%;
+	}
+    /* Stile del footer */
+	footer {
+      	background-color: #555;
+      	color: white;
+      	padding: 15px; 
+	}
+    /* Adattamento automatico per schermi piccoli */
+	@media screen and (max-width: 767px) {
+      	.sidenav {
+       		 height: auto;
+        	 padding: 15px;
+      	}
+      	.row.content {height: auto;} 
+     	 }
+     	 
+	</style>
+	
+ </head>
+ 
+ <body>
+ 
+ <!-- Barra di navigazione laterale con opzioni selezionabili -->
+ <!-- INSERIRE LINK AI BOTTONI UNA VOLTA ACREATI GLI ALTRI HTML -->
+ <div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Menu</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#home">Home</a></li>
+        <li><a href="#catalog">Ticket Catalog</a></li>
+        <li><a href="purchase.html">Purchase</a></li>
+        <li><a href="#">Verify Validation</a></li>
+      </ul><br>
+    </div>
+    
+<!-- Titolo principale -->
+ <div class="col-sm-9" >
+ 	  <h4><small><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;HOME PAGE</small></h4>
+      <hr>
+      <h2><i>Electronic Ticketing System's Web Application</i></h2>
+      <h5><span class="glyphicon glyphicon-wrench"></span> Progetto-J21</h5>
+      <br>
+      <p>This web application allows both travelers and ticket inspectors to use the electronic ticketing system selecting the specific button from the navigation menu on the top of the screen:</p>
+   
+     <ul class = "usage_list"> 
+ 	 <li> Every <b> traveler </b> can buy any type of ticket by clicking on the "Purchase" button </li>
+ 	 <li> The "Ticket Catalog" button provides descriptions of the purchasable <b> travel documents </b></li>
+ 	 <li> Every <b> ticket inspector </b> can log into the inspection area by clicking the "Verify Validation" button</li>
+     </ul>
+     <br>
+    
+     <h4><small><span id="catalog" class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;TICKET CATALOG</small></h4>
+      <hr>
+    <h3><i>Ticket Catalog</i></h3>
+    <h5><span class="glyphicon glyphicon-hand-right"></span> Purchasable tickets' description</h5>
+    <div class="row">
+    	<div class="col-sm-4">
+    	<h4>Single Ride Ticket:</h4>
+    	<br>
+        <img src="webapplication_img/single_ride.jpg" class="img-responsive" style="width:50%" alt="Single_ride">
+        <br>
+        <p> A single ride ticket provides a single usage; it can be used for an hour after its validation </p>
+        <h5><ins>Price</ins>:1.40€</h5><br>
+        <button><a href="purchase.html">Purchase Now!</a></button>
+    </div>
+    <div class="col-sm-4"> 
+    	<h4>Carnet:</h4>
+    	<br>
+      	<img src="webapplication_img/carnet.jpg" class="img-responsive" style="width:50%" alt="Carnet">
+      	<br> 
+        <p> A carnet provides 10 usages; every single ticket can be used for an hour after its validation </p>
+        <h5><ins>Price</ins>:35.50€</h5><br>
+        <button><a href="purchase.html">Purchase Now!</a></button>  
+    </div>
+    <div class="col-sm-4">
+      <h4>Bus Pass:</h4>
+    	<br>
+      	<img src="webapplication_img/bus_pass.jpg" class="img-responsive" style="width:50%" alt="Carnet">
+      	<br>
+        <p> A bus pass provides unlimited usages from its first validation for the time set by its length (at least 30 days)</p>
+        <h5><ins>Price</ins>:12.00€</h5><br>
+        <button><a href="purchase.html">Purchase Now!</a></button> 
+    </div>
+  </div>
+</div><br>
+ 
+ </div>
+ <br>   
+ <hr>
+ </div> </div>
+ 
+ <!-- Footer con nome del gruppo -->
+ <footer class="container-fluid text-center">
+  <p>Powered by <a href="https://github.com/IngSW-unipv/Progetto-J21" title = "Gruppo-J" class = "footer_info"> <i>Gruppo-J</i> </a></p>
+</footer>
