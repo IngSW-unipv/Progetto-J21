@@ -19,5 +19,5 @@ dependencies {
 }
 
 application {
-    mainClassName = 'electronicticketingsystem.test.TicketTester'
+    mainClassName = 'electronicticketingsystem.test.ServerMain'
 }
