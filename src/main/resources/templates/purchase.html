@@ -1,136 +1,146 @@
-@extends(home, pageTitle="Purchase your Tickets!")
- <!DOCTYPE html>
- <html lang="en">
- <head>
- <!-- Meta tags -->
- <meta charset="UTF-8" />
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
- 
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
- 
- <!-- vedi https://getbootstrap.com/docs/3.3/components/ -->
- 
- <!-- Titolo della scheda -->
- <title>Purchase your tickets!</title>
- 
- <style>
-    /* Rimozione bordi arrotondati */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-      background-color: #F1F1F1;
-      
-    }
-    /* Rimozione margine inferiore del jumbotron*/
-     .jumbotron {
-      margin-bottom: 0;
-      background-color: #4682B4;
-      color:#F1F1F1;
-    }
-    /* Immagini centrate all'interno del blocco*/
-    img {
-  	  display: block;
- 	  margin-left: auto;
- 	  margin-right: auto;
- 	  width: 40%;
-}
-    /* Stile del footer (come in home.html) */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px; 
-	}
+<!DOCTYPE html>
+<html>
+<title>Purchase your tickets!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-red.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+	<style>
+		body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+	</style>
+<body>
 
- </style>
- </head>
- <body>
- 
- <!-- Header principale -->
- <div class="jumbotron">
-  <div class="container text-center">
-    <h1>Online Store</h1>      
-    <p>Purchase your <b> travel document</b>! </p>
+<!-- Side Navigation -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
+  <h1 class="w3-xxxlarge w3-text-theme">Menu</h1>
+  <button class="w3-bar-item w3-button" onclick="w3_close()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Close</button>
+  <a href="home.html" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+  <a href="cart.html" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Cart</a>
+  <a href="https://github.com/IngSW-unipv/Progetto-J21" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Contact Us</a>
+</nav>
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
+  <div class="w3-center">
+  <h4>Electronic Ticketing System</h4>
+  <h1 class="w3-xxxlarge w3-animate-bottom">Purchase Your Travel Documents!</h1>
+  <br><br>
+  </div>
+</header>
+
+<div class="w3-row-padding w3-center w3-margin-top">
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:500px">
+  <h3>Single Ride Ticket</h3><br>
+  <i class="glyphicon glyphicon-file w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Single usage</p>
+  <p>It is valid for 1 hour after its validation</p>
+  <p>A single ride ticket costs 1.40 &euro;</p>
+  <br><br>
+  <form class="w3-container w3-card-4" action="/action_page.php">
+  <h4>How many <b>single ride tickets</b> do you want?</h4>
+
+  <select class="w3-select" name="option" id="1">
+    <option value="" disabled selected>Select quantity:</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+  <p><button class="w3-btn w3-red">Register</button></p>
+</form>
   </div>
 </div>
 
- <!-- Barra di navigazione superiore -->
- <nav class="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href=""><span class="glyphicon glyphicon-usd"></span>&nbsp;&nbsp;Shop</a></li> 
-        <li><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;Cart</a></li>
-        <li><a href="https://github.com/IngSW-unipv/Progetto-J21"><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;Contact Us</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="home.html"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Return to the home page</a></li>
-      </ul>
-    </div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:500px">
+  <h3>Carnet</h3><br>
+  <i class="glyphicon glyphicon-duplicate w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>10 usages</p>
+  <p>Every single ticket is valid for 1 hour after its validation</p>
+  <p>A carnet costs 35.50 &euro;</p>
+  <br><br>
+  <form class="w3-container w3-card-4" action="/action_page.php">
+  <h4>How many <b>carnet</b> do you want?</h4>
+
+  <select class="w3-select" name="option" id="3">
+    <option value="" disabled selected>Select quantity:</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+  <p><button class="w3-btn w3-red">Register</button></p>
+</form>
   </div>
-</nav>
-<br><br><br>
+</div>
 
-<!-- Pannelli contenenti informazioni sintetiche sul tipo di biglietto e ottone per scegliere quantità -->
-<div class="container">    
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading" style="text-align:center"><b>SINGLE RIDE TICKET:</b></div>
-        <div class="panel-body"><img src="webapplication_img/single_ride.jpg" class="img-responsive" alt="Single Ride"></div>
-        <div class="panel-footer">Buy a <b>single ride ticket</b> for 1.40€ <br> </div>
-      </div>
-      <form>
- 	 <label for="qty_sr"> Quantity (10 max): </label>
- 	 <input type="number" id="qty_sr" name="qty_sr" min="0" max="10">
- 	 <br>
- 	 <br>
- 	 <input type="submit" value="Shop Now!" class="btn btn-primary">
-	 <input type="reset" value="Reset" class="btn btn-danger">
- 	</form>
-	</div>
-    <div class="col-sm-4"> 
-       <div class="panel panel-primary">
-        <div class="panel-heading" style="text-align:center"><b>CARNET:</b></div>
-        <div class="panel-body"><img src="webapplication_img/carnet.jpg" class="img-responsive" alt="Carnet"></div>
-        <div class="panel-footer">Buy a <b>carnet</b> of 10 tickets for 35.50€ <br> </div>
-      </div>
-      <form>
- 	 <label for="qty_sr"> Quantity (10 max): </label>
- 	 <input type="number" id="qty_sr" name="qty_sr" min="0" max="10">
- 	 <br>
- 	 <br>
- 	 <input type="submit" value="Shop Now!" class="btn btn-primary">
-	 <input type="reset" value="Reset" class="btn btn-danger">
- 	</form>
-      </div>
-     <div class="col-sm-4"> 
-       <div class="panel panel-primary">
-        <div class="panel-heading" style="text-align:center"><b>BUS PASS:</b></div>
-        <div class="panel-body"><img src="webapplication_img/bus_pass.jpg" class="img-responsive" alt="Single Ride"></div>
-        <div class="panel-footer">Buy a <b>bus pass</b> for 12.00€ <br> </div>
-      </div>
-      <form>
- 	 <label for="qty_sr"> Quantity (10 max): </label>
- 	 <input type="number" id="qty_sr" name="qty_sr" min="0" max="10">
- 	 <br>
- 	 <br>
- 	 <input type="submit" value="Shop Now!" class="btn btn-primary">
-	 <input type="reset" value="Reset" class="btn btn-danger">
- 	 </form>
-   </div>
+<div class="w3-third">
+  <div class="w3-card w3-container" style="min-height:500px">
+  <h3>Bus Pass</h3><br>
+  <i class="glyphicon glyphicon-credit-card w3-margin-bottom w3-text-theme" style="font-size:120px"></i>
+  <p>Unlimited usages 30 days!</p>
+  <p>Validation only at the first usage</p>
+  <p>A bus pass costs 12.00 &euro;</p>
+  <br><br>
+  <form class="w3-container w3-card-4" action="/action_page.php">
+  <h4>How many <b>bus pass</b> do you want?</h4>
+
+  <select class="w3-select" name="option" id="3">
+    <option value="" disabled selected>Select quantity:</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+  <p><button class="w3-btn w3-red">Register</button></p>
+</form>
   </div>
-  </div>
-<br>
+</div>
+</div>
 
+<!-- Footer -->
+<footer class="w3-light-grey w3-container w3-padding">
+  <p class="w3-center" style="margin-top:75px">Powered by <a href="https://github.com/IngSW-unipv/Progetto-J21" title="Gruppo-J21" target="_blank" class="w3-hover-opacity">Gruppo-J21</a></p>
+</footer>
 
+<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+<script>
+// Side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "100%";
+  x.style.fontSize = "40px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
 
- </body>
- </html>
+</script>
+
+</body>
+</html>
