@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.rythmengine.Rythm;
 
 import electronicticketingsystem.controller.TicketMachine;
-import electronicticketingsystem.util.ticket.SingleRideTicket;
-import electronicticketingsystem.util.ticket.TravelDocument;
+import electronicticketingsystem.util.ticket.*;
 
 public class WelcomeServlet extends HttpServlet{
 	
@@ -37,25 +36,28 @@ public class WelcomeServlet extends HttpServlet{
 	
 	
 	protected void home(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException{
-		TravelDocument ti=new SingleRideTicket();
-		resp.getWriter().write(Rythm.render("home.html", ti));
+		TravelDocument sr=new SingleRideTicket();
+		TravelDocument c=new Carnet();
+		TravelDocument bp=new BusPass();
+		resp.getWriter().write(Rythm.render("home.html", sr, c, bp));
 	}
 		
 	protected void purchase(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException{
-		
 		resp.getWriter().write(Rythm.render("purchase.html"));
-		if((req.getPathInfo().equals("Return to the home page"))){
-			home(req,resp);
-		}else if((req.getPathInfo().equals("Reset")))
-				purchase(req,resp);
-		else if(req.getPathInfo().equals("Shop") || (req.getPathInfo().equals("Shop Now!")))
-				shop(req,resp);
+		if(req.getPathInfo().equals("/save")) {
+			shop(req,resp);
+		} else if(req.getPathInfo().equals("/cart")) {
+			resp.getWriter().write(Rythm.render("cart.html"));
+		}
+		
 				
 	}
 	
 	protected void shop(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException{
-		//tm.makeSale();
-		//TicketMachine.enterItem(req.getParameter("type"), req.getParameter("qty"));
+		TicketMachine tm = new TicketMachine();
+		tm.makeSale();
+		
+		//tm.enterItem(req.getParameter("id"), req.getParameter("qty"));
 	}
 
 }
