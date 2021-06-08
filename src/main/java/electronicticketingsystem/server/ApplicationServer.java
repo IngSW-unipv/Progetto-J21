@@ -22,7 +22,7 @@ public class ApplicationServer {
     }
 
     public void start() throws Exception {
-    	initTemplateEngine();
+    	initRythm();
         server = new Server(port);
         ServletContextHandler handler = new ServletContextHandler();
         handler.addServlet(new ServletHolder(servlet), "/*");
@@ -43,7 +43,7 @@ public class ApplicationServer {
         handler.addServlet(holderPwd, "/statics/*");
     }
     
-    private void initTemplateEngine() {
+    private void initRythm() {
         Map<String, Object> conf = new HashMap<>();
         conf.put("home.template", "templates");
         Rythm.init(conf);
