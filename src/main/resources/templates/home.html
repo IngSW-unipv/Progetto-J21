@@ -1,3 +1,13 @@
+@import electronicticketingsystem.util.ticket.SingleRideTicket
+@import electronicticketingsystem.util.ticket.Carnet
+@import electronicticketingsystem.util.ticket.BusPass
+
+@args() {
+	SingleRideTicket sr
+	Carnet c
+	BusPass bp
+}
+
 <!DOCTYPE html>
 <html lang="en">
 </head>
@@ -27,9 +37,9 @@
     <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
     <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
     <a href="#catalog" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Ticket Catalog</a> 
-    <a href="purchase.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Purchase</a>
+    <a href="/purchase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Purchase</a>
 	<br><br><br><br><br>
-	<a href="#login" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Reserved Area</a>
+	<a href="login.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Reserved Area</a>
   </div>
 </nav>
 
@@ -79,7 +89,7 @@
         <li class="w3-padding-16">Single usage</li>
         <li class="w3-padding-16">1 hour after validation</li>
         <li class="w3-padding-16">
-          <h2>1.40 &euro;</h2>
+          <h2>@(sr.getPrice()) &euro;</h2>
           <span class="w3-opacity">per ticket</span>
         </li>
       </ul>
@@ -91,7 +101,7 @@
         <li class="w3-padding-16">10 usages</li>
         <li class="w3-padding-16">1 hour after validation for each ticket</li>
         <li class="w3-padding-16">
-          <h2>35.50 &euro;</h2>
+          <h2>@(c.getPrice()) &euro;</h2>
           <span class="w3-opacity">per carnet</span>
         </li>
 		<li>
@@ -106,7 +116,7 @@
         <li class="w3-padding-16">Unlimited usages for the selected time!</li>
         <li class="w3-padding-16">Validation only at the first usage</li>
         <li class="w3-padding-16">
-          <h2>12.00 &euro;</h2>
+          <h2>@(bp.getPrice()) &euro;</h2>
           <span class="w3-opacity">per bus pass</span>
         </li>
       </ul>
