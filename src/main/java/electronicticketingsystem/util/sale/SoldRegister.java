@@ -1,23 +1,21 @@
 package electronicticketingsystem.util.sale;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SoldRegister {
-	private static List<SaleLineItem> payedTickets;
+	private static Map<String, SaleLineItem> payedTickets;
 	
 	public SoldRegister() {
-		SoldRegister.payedTickets=new ArrayList<>();
+		SoldRegister.payedTickets=new HashMap<>();
 	}
 	
 	public void addToRegister(SaleLineItem ticket) {
-		payedTickets.add(ticket); //aggiungi i biglietti comprati alla lista
+		payedTickets.put(ticket.getTicketID(), ticket); //carica nella mappa l'id generato dal sistema
 	}
 	
-	public static SaleLineItem findByTicketId(String id) {
-		for(SaleLineItem i: payedTickets) {
-			if(i.generateTicketID().equals(id)) return i; //restituisci l'istanza in base al suo id
-		}
-		return null; //eventualmente inserire eccezione per biglietto non restituito
+	public static SaleLineItem returnTicket(String id) {
+		return payedTickets.get(id);
 	}
 }
+
