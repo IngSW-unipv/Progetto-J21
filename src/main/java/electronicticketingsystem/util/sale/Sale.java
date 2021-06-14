@@ -40,7 +40,7 @@ public class Sale {
 		//p sarà poi usato per salvare i relativi dati
 	}
 	
-	public double getChange() {
+	public Cash getChange() {
 		return p.getChange();
 	}
 }

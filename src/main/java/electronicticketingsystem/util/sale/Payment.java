@@ -2,18 +2,24 @@ package electronicticketingsystem.util.sale;
 
 public class Payment {
 	
-	private double amount,change;
+	private double amount;
+	private Cash change;
 	
 	public Payment(double amount) {
 		this.amount=amount;
-		this.change=0.0;
+		this.change=new Cash(0.0);
+	}
+	
+	public Payment(Cash enteredMoney) {
+		this.amount=enteredMoney.getImporto(); 
+		this.change=new Cash(0.0);
 	}
 	
 	public void makePayment(double cash) {
-		change=cash-this.amount;
+		change=new Cash(amount-cash); 
 	}
 	
-	public double getChange() {
+	public Cash getChange() {
 		return change;
 	}
 	
