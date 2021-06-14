@@ -1,6 +1,7 @@
 package electronicticketingsystem.controller;
 import java.util.*;
 
+import electronicticketingsystem.util.sale.Cash;
 import electronicticketingsystem.util.sale.Sale;
 
 public class TicketMachine {
@@ -22,7 +23,7 @@ public class TicketMachine {
 		 s.makePayment(cs);
 	}
 	
-	public double getChange() {
+	public Cash getChange() {
 		return s.getChange();
 		}
 	
