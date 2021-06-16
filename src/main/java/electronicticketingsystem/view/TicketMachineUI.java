@@ -21,7 +21,7 @@ public class TicketMachineUI {
 	public void start(TicketCatalog cat) {
 		
 		do {
-			System.out.println(" 1-Validation \n  2-Purchase \n 9-End ");
+			System.out.println("1 - Validation\n2 - Purchase\n9 - End");
 			choice=s.nextInt();
 			switch(choice) {
 				case 1: 
@@ -33,7 +33,7 @@ public class TicketMachineUI {
 					int type=0,qty=0;
 					do {
 						cat.printTicketCatalog();
-						System.out.println("9- Payment");
+						System.out.println("9 - Payment");
 						type=s.nextInt();
 						if(type!=9) {
 							System.out.println("Please, enter quantity");
@@ -45,7 +45,7 @@ public class TicketMachineUI {
 					System.out.println("Please, enter cash");
 					double cs=s.nextDouble();
 					tm.makePayment(cs);
-					System.out.println("The change is: " + tm.getChange());
+					System.out.println("The change is: \n" + tm.getChange());
 					tm.endSale();
 				break;
 					

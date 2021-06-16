@@ -11,7 +11,7 @@ public class Payment {
 	}
 	
 	public Payment(Cash enteredMoney) {
-		this.amount=enteredMoney.getImporto(); 
+		this.amount=enteredMoney.getAmount(); 
 		this.change=new Cash(0.0);
 	}
 	
