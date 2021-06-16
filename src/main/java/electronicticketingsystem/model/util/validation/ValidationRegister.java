@@ -1,6 +1,5 @@
-package electronicticketingsystem.util.validation;
+package electronicticketingsystem.model.util.validation;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,13 @@ public class ValidationRegister {
 			if(i.getID().equals(id)) return i;
 		} return null; //se non viene trovato alcun elemento corrispondente ritorna null
 
+	}
+	
+	public void printValidationRegister() {
+		System.out.println("Validated tickets' register:\n");
+		for (Validation i : stampedTickets) {
+			System.out.println("ID: "+i.getID() + "Expiration Time: "+i.getExpirationTime());
+		}
 	}
 	
 }

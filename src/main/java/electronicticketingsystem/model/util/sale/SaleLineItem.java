@@ -1,6 +1,8 @@
-package electronicticketingsystem.util.sale;
+package electronicticketingsystem.model.util.sale;
 
-import electronicticketingsystem.util.ticket.*;
+import electronicticketingsystem.model.util.ticket.TicketCatalog;
+import electronicticketingsystem.model.util.ticket.TravelDocument;
+import electronicticketingsystem.model.util.ticket.*;
 
 
 public class SaleLineItem {

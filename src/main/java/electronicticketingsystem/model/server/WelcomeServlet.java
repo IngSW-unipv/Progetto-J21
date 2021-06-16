@@ -1,4 +1,4 @@
-package electronicticketingsystem.server;
+package electronicticketingsystem.model.server;
 
 import java.io.IOException;
 
@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.rythmengine.Rythm;
 
 import electronicticketingsystem.controller.TicketMachine;
-import electronicticketingsystem.util.ticket.*;
+import electronicticketingsystem.model.util.ticket.BusPass;
+import electronicticketingsystem.model.util.ticket.Carnet;
+import electronicticketingsystem.model.util.ticket.SingleRideTicket;
+import electronicticketingsystem.model.util.ticket.TravelDocument;
+import electronicticketingsystem.model.util.ticket.*;
 
 public class WelcomeServlet extends HttpServlet{
 	
@@ -23,17 +27,14 @@ public class WelcomeServlet extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		requests(req,resp);
-		
 	}
 	
 	protected void requests(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException{
 		if(req.getPathInfo().equals("/")) {
 			home(req,resp);
-		}else if(req.getPathInfo().equals("/purchase") )
+		}if(req.getPathInfo().equals("/purchase") )
 			purchase(req,resp);
-			
 		}
-	
 	
 	protected void home(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException{
 		TravelDocument sr=new SingleRideTicket();

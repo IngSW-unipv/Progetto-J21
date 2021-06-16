@@ -1,8 +1,10 @@
-package electronicticketingsystem.util.validation;
+package electronicticketingsystem.model.util.validation;
 
 import java.time.LocalTime;
 
-import electronicticketingsystem.util.sale.*;
+import electronicticketingsystem.model.util.sale.SaleLineItem;
+import electronicticketingsystem.model.util.sale.SoldRegister;
+import electronicticketingsystem.model.util.sale.*;
 
 public class Validation {
 	private LocalTime expirationTime;
