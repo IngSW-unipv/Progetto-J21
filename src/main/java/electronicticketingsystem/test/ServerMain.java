@@ -1,7 +1,7 @@
 package electronicticketingsystem.test;
 
-import electronicticketingsystem.server.ApplicationServer;
-import electronicticketingsystem.server.WelcomeServlet;
+import electronicticketingsystem.model.server.ApplicationServer;
+import electronicticketingsystem.model.server.WelcomeServlet;
 
 public class ServerMain {
 	

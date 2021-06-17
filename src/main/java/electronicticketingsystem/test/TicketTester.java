@@ -2,7 +2,7 @@ package electronicticketingsystem.test;
 
 import java.util.Scanner;
 
-import electronicticketingsystem.util.ticket.*;
+import electronicticketingsystem.model.util.ticket.*;
 import electronicticketingsystem.view.TicketMachineUI;
 
 public class TicketTester {

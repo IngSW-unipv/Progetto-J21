@@ -1,4 +1,4 @@
-package electronicticketingsystem.util.validation;
+package electronicticketingsystem.model.util.validation;
 
 import java.time.LocalTime;
 
@@ -16,7 +16,7 @@ public class Check {
 	}
 	
 	public String toString() {
-		if(this.validity==true) return "Il biglietto con codice ID "+ticketToControl.getID()+"è valido";
-		else return "Il biglietto non è valido!";
+		if(this.validity==true) return "The travel document with ID "+ticketToControl.getID()+"is valid";
+		else return "This travel document isn't valid!";
 	}
 }

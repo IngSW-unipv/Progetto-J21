@@ -4,7 +4,7 @@ import java.util.*;
 
 
 import electronicticketingsystem.controller.TicketMachine;
-import electronicticketingsystem.util.ticket.TicketCatalog;
+import electronicticketingsystem.model.util.ticket.TicketCatalog;
 
 public class TicketMachineUI {
 	

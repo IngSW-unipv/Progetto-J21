@@ -1,4 +1,4 @@
-package electronicticketingsystem.util.sale;
+package electronicticketingsystem.model.util.sale;
 
 public class Cash {
 	private double amount;
