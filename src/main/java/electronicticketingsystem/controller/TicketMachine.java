@@ -1,8 +1,8 @@
 package electronicticketingsystem.controller;
 import java.util.*;
 
-import electronicticketingsystem.util.sale.Cash;
-import electronicticketingsystem.util.sale.Sale;
+import electronicticketingsystem.model.util.sale.Cash;
+import electronicticketingsystem.model.util.sale.Sale;
 
 public class TicketMachine {
 	Sale s;
