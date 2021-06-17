@@ -12,6 +12,7 @@ public class Validation {
 	public Validation(String id) {
 		this.id=SoldRegister.returnTicket(id).getTicketID(); 
 		setExpirationTime();
+		SoldRegister.returnTicket(id).SetOneAccessLess(); //quando viene effettuata una convalida si abbassa di uno il contatore delle corse
 	}
 	
 	private void setExpirationTime() {

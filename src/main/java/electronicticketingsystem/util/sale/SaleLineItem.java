@@ -5,19 +5,26 @@ import electronicticketingsystem.util.ticket.*;
 
 public class SaleLineItem {
 
-	private TravelDocument ticket; //ticket contiene tutti i dati utili per questa linea
-	private String ticketID;
+	private double price;
+	private long time;		//tempo di durata validità
+	private String ticketID;	//codice univoco
+	private int accesses;	//numero di corse
 	
 	public SaleLineItem(int type) {
-		this.ticket=TicketCatalog.getSelectedTravelDocument(type);
-		this.ticketID = generateTicketID();
+		TravelDocument ticket=TicketCatalog.getSelectedTravelDocument(type);
+		this.price=ticket.getPrice();
+		this.time=ticket.getTimeToAdd();
+		this.ticketID = generateTicketID(ticket);
+		
+		if(type==2) this.accesses=((Carnet) ticket).getAccessesNumber();
+		else this.accesses=1;	
 	}
 	
 	public double getSubTotal() {
-		return ticket.getPrice();
+		return this.price;
 	}
 	
-	public String generateTicketID() {
+	public String generateTicketID(TravelDocument ticket) {
 		String typeCode = Integer.toString(ticket.getType());
 		String descriptionCode = ticket.getDescription().substring(0, 3).toUpperCase();
 		String randomCode = Integer.toString((int)(Math.random()*10000));
@@ -29,6 +36,14 @@ public class SaleLineItem {
 	}
 	
 	public long getTime() {
-		return ticket.getTimeToAdd();
+		return this.time;
+	}
+	
+	public int getNumberAccesses() {
+		return this.accesses;
+	}
+	
+	public void SetOneAccessLess() {
+		this.accesses-=1;
 	}
 }
