@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Ticket Inspectors' Reserved Area</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-red.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+	<style>
+		body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+	</style>
+	
+</head>
+<body>
+<!-- Side Navigation -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
+  <h1 class="w3-xxxlarge w3-text-theme">Menu</h1>
+  <button class="w3-bar-item w3-button" onclick="w3_close()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Close</button>
+  <a href="/" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a>
+  <a href="https://github.com/IngSW-unipv/Progetto-J21" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Contact Us</a>
+</nav>
+
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader">
+  <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
+  <div class="w3-center">
+  <h4>Electronic Ticketing System</h4>
+  <h1 class="w3-xxxlarge w3-animate-bottom">Welcome (Ticket Inspector's Name)!</h1>
+  <br><br>
+  </div>
+</header>
+
+<div class="w3-container w3-padding-32" style="margin-left:450px">
+<div class="w3-container w3-card-4 w3-light-grey w3-text-red w3-margin" style="width:50%">
+<form><br>
+<h2 class="w3-center">Verify Validation</h2>
+<h4 class="w3-center">Insert the <b>ID</b> of the travel document you want to check</h4><br>
+ 
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-ticket"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" name="first" type="text" placeholder="Ticket ID">
+    </div>
+</div><br><br><br>
+
+<button class="w3-button w3-block w3-section w3-red w3-ripple w3-padding">Check</button>
+
+</form>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-light-grey w3-container w3-padding">
+  <p class="w3-center" style="margin-top:15px">Powered by <a href="https://github.com/IngSW-unipv/Progetto-J21" title="Gruppo-J21" target="_blank" class="w3-hover-opacity">Gruppo-J21</a></p>
+</footer>
+
+
+<script>
+// Side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "100%";
+  x.style.fontSize = "40px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
