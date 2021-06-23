@@ -9,6 +9,7 @@ public class Sale {
 	private List<SaleLineItem> items;
 	private double total; //meglio se viene recuperato da TicketDescription
 	private Payment p;
+	private SoldRegister payedTickets;
 	
 	public Sale() {
 		this.completed=false; //posizione aperta appena viene invocato
@@ -23,8 +24,18 @@ public class Sale {
 	}
 	
 	public void setCompleted() {
+		payedTickets = SoldRegister.getInstance();
 		this.completed=true;
-		// inoltrare tutto a base dati...
+		for (SaleLineItem i : items) {
+			payedTickets.addToRegister(i);
+		}
+	}
+	
+	public void printItems() {
+		System.out.println("Purchased travel documents:\n");
+		for (SaleLineItem i : items) {
+			System.out.println("ID: " + i.getTicketID()+"\n");
+		}
 	}
 	
 	public double getTotal() {
