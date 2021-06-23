@@ -1,8 +1,8 @@
-@import electronictickeitngsystem.model.util.sale.Sale;
+<!-- @import electronicticketingsystem.model.util.sale.Sale
 
-@args {
+@args() {
 	Sale sale
-}
+}  -->
 
 <!DOCTYPE html>
 <html>
@@ -20,15 +20,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 	<style>
 		body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-		/* Adattabilità a diminuzione dimensioni scheda*/
-		@media (max-width: 800px) {
-  		.row {
-    		flex-direction: column-reverse;
-  		}
-  		.col-25 {
-   			 margin-bottom: 20px;
-  		}
-		} 
 </style>
 </head>
 
@@ -57,20 +48,20 @@
       <table class="w3-table-all w3-card-2 w3-white">
       <thead>
 	      <tr>
-	        <th>Type</th>
+	        <th>Ticket ID</th>
 	        <th>Quantity</th>
 	        <th class="w3-center">Price</th>
 	        <th><a href="/purchase" class="w3-btn w3-grey w3-text-white">+ Add another item</a></th>
 	      </tr>
 	  </thead>
 	  <tbody>
-	    
+	 
 			<tr> 
-				<td>tipo</td>
-				<td>quantità</td> 
-				<td>@(sale.getTotal())</td>
+				<td>2</td>
+				<td>1</td> 
+				<td>3</td>
 			</tr>
-		
+	  
 		</tbody>
     </table><br>
     <a href="purchase.html" class="w3-theme w3-button">Continue shopping</a>
