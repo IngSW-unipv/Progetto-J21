@@ -3,12 +3,16 @@ import java.util.*;
 
 import electronicticketingsystem.model.util.sale.Cash;
 import electronicticketingsystem.model.util.sale.Sale;
+import electronicticketingsystem.model.util.validation.Validation;
+import electronicticketingsystem.model.util.validation.ValidationRegister;
 
 public class TicketMachine {
 	Sale s;
+	ValidationRegister vr;
 	
-	public void makeSale() {
+	public Sale makeSale() {
 		 s=new Sale();
+		 return s;
 	}
 	
 	public void enterItem(int type,int qty) {
@@ -29,6 +33,12 @@ public class TicketMachine {
 	
 	public void endSale() {
 		s.setCompleted();
+	}
+	
+	public void validation(String ticketID) {
+		vr = ValidationRegister.getInstance();
+		vr.addToRegister(new Validation(ticketID));
+		vr.printValidationRegister();
 	}
 
 	

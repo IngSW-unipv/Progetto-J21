@@ -25,9 +25,11 @@ public class TicketMachineUI {
 			choice=s.nextInt();
 			switch(choice) {
 				case 1: 
-					//operazioni future
+					String id;
+					System.out.println("Please, enter the ID of the ticket you want to validate");
+					id = s.next();
+					tm.validation(id);
 				break;
-				
 				case 2:
 					tm.makeSale();
 					int type=0,qty=0;
@@ -47,6 +49,7 @@ public class TicketMachineUI {
 					tm.makePayment(cs);
 					System.out.println("The change is: \n" + tm.getChange());
 					tm.endSale();
+				
 				break;
 					
 			};

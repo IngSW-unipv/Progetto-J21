@@ -6,7 +6,7 @@ public class Check {
 	private boolean validity;
 	private Validation ticketToControl;
 	
-	public Check(String id) {
+	public Check(String id)  {
 		this.ticketToControl=ValidationRegister.findValidation(id);
 		if(ticketToControl.equals(null)) this.validity=false;
 		else {

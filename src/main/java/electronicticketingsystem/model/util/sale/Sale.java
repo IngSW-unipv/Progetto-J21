@@ -24,16 +24,11 @@ public class Sale {
 	}
 	
 	public void setCompleted() {
+		System.out.println("Purchased travel documents:");
 		payedTickets = SoldRegister.getInstance();
 		this.completed=true;
 		for (SaleLineItem i : items) {
 			payedTickets.addToRegister(i);
-		}
-	}
-	
-	public void printItems() {
-		System.out.println("Purchased travel documents:\n");
-		for (SaleLineItem i : items) {
 			System.out.println("ID: " + i.getTicketID()+"\n");
 		}
 	}

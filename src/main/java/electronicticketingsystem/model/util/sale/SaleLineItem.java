@@ -45,7 +45,7 @@ public class SaleLineItem {
 		return this.accesses;
 	}
 	
-	public void SetOneAccessLess() {
+	public void setOneAccessLess() {
 		this.accesses-=1;
 	}
 }

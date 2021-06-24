@@ -13,8 +13,9 @@ public class SoldRegister {
 	}
 	
 	public static SoldRegister getInstance() {
-		if (instance == null)
+		if (instance == null) {
 			instance = new SoldRegister();
+		}
 		return instance;
 	}
 	
@@ -23,10 +24,15 @@ public class SoldRegister {
 	}
 	
 	public static SaleLineItem returnTicket(String id) {
+		int soldRegisterIndex = 0;
 		for (SaleLineItem i : payedTickets) {
-			if (i.getTicketID() == id) return i;
-		} return null;
-	} 
+			if (i.getTicketID() == id) {
+				soldRegisterIndex = payedTickets.indexOf(i);
+			}
+		}
+		return payedTickets.get(soldRegisterIndex);
+	}
+	
 	
 }
 
