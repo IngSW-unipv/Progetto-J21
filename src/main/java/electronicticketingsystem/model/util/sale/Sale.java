@@ -52,6 +52,9 @@ public class Sale {
 	 * Metodo per marcare come completata una vendita (ovvero quando è ricevuro il pagamento). Quando viene invocato, 
 	 * il metodo imposta a true l'attributo completed, aggiunge al registro dei biglietti venduti gli elementi che compongono 
 	 * la vendita e stampa una copia del registro per visualizzare i biglietti venduti.
+	 * @throws PaymentNotCompletedException			se il pagamento non risulta completato viene segnalato all'utente, la
+	 * 												procedura di vendita non si conclude e quindi gli articoli che la 
+	 * 											    compongono non vengono aggiunti al SoldRegister
 	 */
 	public void setCompleted() throws PaymentNotCompletedException {
 		if (p.isCompleted()) {
@@ -82,6 +85,7 @@ public class Sale {
 	 * dovuto e si invoca il metodo della classe che sottrae al denaro inserito cs il totale per calcolare il
 	 * resto
 	 * @param cs (double)
+	 * @throws PaymentNotCompletedException 		gestione dell'eccezione di pagamento non completato
 	 */
 	public void makeCashPayment(double cs) {
 		p=new CashPayment(total);
@@ -98,6 +102,7 @@ public class Sale {
 	 * con il totale dovuto e la carta di credito da usare per la vendita e si invoca il metodo della classe che simula il 
 	 * pagamento
 	 * @param cc (CreditCard)
+	 *  @throws PaymentNotCompletedException 		gestione dell'eccezione di pagamento non completato
 	 */
 	public void makeCreditCardPayment(CreditCard cc) {
 		p=new CreditCardPayment(total,cc);

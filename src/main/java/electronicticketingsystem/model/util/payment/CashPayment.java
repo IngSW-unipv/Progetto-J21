@@ -45,8 +45,11 @@ public class CashPayment implements Payment{
 	 * Metodo che simula il pagamento in contanti. Il metodo richiede in ingresso la quantità
 	 * di denaro inserita dall'utente e calcola il resto creando un oggetto della classe Cash 
 	 * che restituisca le varie monete e banconote di resto a fronte di un totale pari al denaro
-	 * inserito meno l'ammontare della spesa. Il metodo contrassegna quindi il pagamento come completato.
+	 * inserito meno l'ammontare della spesa. Il metodo contrassegna quindi il pagamento come completato
+	 * se il denaro inserito è almeno pari al totale da pagare, altrimenti il pagamento non va a 
+	 * buon fine ed è sollevata un'eccezione.
 	 * @param cash (double)
+	 * @throws PaymentNotCompletedException
 	 */
 	public void makePayment(double cash) throws PaymentNotCompletedException {
 		if (cash >= amount) {

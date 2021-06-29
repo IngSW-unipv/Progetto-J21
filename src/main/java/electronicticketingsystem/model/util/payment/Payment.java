@@ -10,7 +10,8 @@ public interface Payment {
 	
 	/**
 	 * Metodo che permette di simulare la procedura di pagamento
-	 * @param amount			richiede in ingresso il valore double che indica il totale da pagare
+	 * @param amount							richiede in ingresso il valore double che indica il totale da pagare
+	 * @throws PaymentNotCompletedException		nel caso in cui il pagamento non possa essere marcato come completato
 	 */
 	public void makePayment(double amount) throws PaymentNotCompletedException;
 	

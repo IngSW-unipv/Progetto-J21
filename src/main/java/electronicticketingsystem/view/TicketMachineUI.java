@@ -42,6 +42,7 @@ public class TicketMachineUI {
 	 * all'utente di visualizzare a schermo i risultati.
 	 * @param cat		richiede in ingresso un oggetto della classe TicketCatalog perchè l'utente visualizzi i
 	 * 					prodotti acquistabili
+	 * @exception PaymentNotCompletedException
 	 */
 	public void start(TicketCatalog cat) {
 		

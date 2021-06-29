@@ -85,6 +85,7 @@ public class TicketMachine {
 	/**
 	 * Metodo per terminare la procedura di vendita.
 	 * Questo metodo si limita a richiamare il metodo endSale della classe Sale.
+	 * @throws PaymentNotCompletedException
 	 */
 	public void endSale() throws PaymentNotCompletedException {
 		s.setCompleted();

@@ -35,8 +35,11 @@ public class CreditCardPayment implements Payment {
 	
 	/**
 	 * Metodo che simula il pagamento con carta di credito. Il metodo richiede in ingresso il totale da pagare
-	 * e simula il pagamento considerando che vada a buon fine in tutti i casi in cui la carta non è scaduta.
+	 * e simula il pagamento considerando che vada a buon fine in tutti i casi in cui la carta non è scaduta e 
+	 * il numero di carta e il cvv sono della lunghezza corretta; se i dati immessi non sono validi, il pagamento
+	 * non va a buon fine ed è lanciata un'eccezione
 	 * @param amount (double)
+	 * @throws PaymentNotCompletedException
 	 */
 	public void makePayment(double amount) throws PaymentNotCompletedException {
 		if ((creditCard.checkExpiration())&&(creditCard.checkCardNumber())&&(creditCard.checkCVV())) {

@@ -12,6 +12,10 @@ import java.time.YearMonth;
  */
 public class CreditCard {
 
+	/**
+	 * @param CARD_NUMBER_LENGTH		valore costante, il numero di carta di credito è sempre lungo 16 cifre
+	 * @param CVV_LENGTH				valore costante, il cvv della carta di credito è sempre lungo 3 cifre
+	 */
 	public static final int CARD_NUMBER_LENGTH = 16;
 	public static final int CVV_LENGTH = 3;
 	
@@ -60,6 +64,11 @@ public class CreditCard {
 			return true;
 	}
 	
+	/**
+	 * Metodo che controlla la validità del numero di carta di credito inserito: se la sua lunghezza è minore di
+	 * 16, il numero di carta non è valido (valore booleano false)
+	 * @return boolean
+	 */
 	public boolean checkCardNumber() {
 		if (cardNumber.length() != CARD_NUMBER_LENGTH) {
 			return false;
@@ -67,6 +76,11 @@ public class CreditCard {
 			return true;
 	}
 	
+	/**
+	 * Metodo che controlla la validità del cvv della carta di credito inserito: se la sua lunghezza è minore di
+	 * 3, il cvv non è valido (valore booleano false)
+	 * @return boolean
+	 */
 	public boolean checkCVV() {
 		if (cvv.length() != CVV_LENGTH) {
 			return false;
