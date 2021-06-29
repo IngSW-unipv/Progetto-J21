@@ -2,6 +2,7 @@ package electronicticketingsystem.model.util.sale;
 
 import java.util.*;
 
+import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.payment.CashPayment;
 import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.payment.CreditCardPayment;
@@ -52,7 +53,7 @@ public class Sale {
 	 * il metodo imposta a true l'attributo completed, aggiunge al registro dei biglietti venduti gli elementi che compongono 
 	 * la vendita e stampa una copia del registro per visualizzare i biglietti venduti.
 	 */
-	public void setCompleted() {
+	public void setCompleted() throws PaymentNotCompletedException {
 		if (p.isCompleted()) {
 			System.out.println("Purchased travel documents:");
 			payedTickets = SoldRegister.getInstance();
@@ -61,7 +62,8 @@ public class Sale {
 				payedTickets.addToRegister(i);
 				System.out.println("ID: " + i.getTicketID()+"\n");
 			}
-		}
+		} else 
+			throw new PaymentNotCompletedException("Payment has not been completed successfully");
 	}
 	
 	/**
@@ -83,8 +85,12 @@ public class Sale {
 	 */
 	public void makeCashPayment(double cs) {
 		p=new CashPayment(total);
-		p.makePayment(cs);
-		//p sarà poi usato per salvare i relativi dati
+		try {
+			p.makePayment(cs);
+			//p sarà poi usato per salvare i relativi dati
+		} catch (PaymentNotCompletedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -95,7 +101,12 @@ public class Sale {
 	 */
 	public void makeCreditCardPayment(CreditCard cc) {
 		p=new CreditCardPayment(total,cc);
-		p.makePayment(total);
+		try {
+			p.makePayment(total);
+		} catch (PaymentNotCompletedException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	/**

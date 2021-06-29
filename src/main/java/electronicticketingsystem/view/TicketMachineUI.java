@@ -6,6 +6,7 @@ import java.time.YearMonth;
 import electronicticketingsystem.controller.TicketMachine;
 import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.ticket.TicketCatalog;
+import electronicticketingsystem.model.util.exceptions.*;
 
 /**
  * Classe che descrive la view del sistema. La classe gestisce l'interfaccia utente testuale dell'emettitrice, 
@@ -76,7 +77,12 @@ public class TicketMachineUI {
 							double cs=s.nextDouble();
 							tm.makeCashPayment(cs);
 							System.out.println("The change is: \n" + tm.getChange());
-							tm.endSale();
+							try {
+								tm.endSale();
+							} catch (PaymentNotCompletedException e) {
+								e.printStackTrace();
+							}
+							
 						break;
 						case 2:
 							System.out.println("Please submit your credit card details\nCard Number:");
@@ -88,7 +94,12 @@ public class TicketMachineUI {
 							String cvv = s.next();
 							CreditCard cc = new CreditCard(cardNumber, expDate, cvv);
 							tm.makeCreditCardPayment(cc);
-							tm.endSale();
+							try {
+								tm.endSale();
+							} catch (PaymentNotCompletedException e) {
+								e.printStackTrace();
+							}
+							
 					};
 					
 					

@@ -19,7 +19,7 @@ public class Cash {
 	 * @param a (double)
 	 */
 	public Cash(double a) {
-		this.amount=-a;
+		this.amount=a;
 		b50=(int)(amount / 50);     // numero di banconote da 50 euro
 		double change = amount % 50;
 		b20=(int)(change / 20);        // numero di banconote da 20 euro

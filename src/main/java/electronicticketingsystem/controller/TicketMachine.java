@@ -1,6 +1,7 @@
 package electronicticketingsystem.controller;
 import java.util.*;
 
+import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.sale.Cash;
 import electronicticketingsystem.model.util.sale.Sale;
@@ -85,7 +86,7 @@ public class TicketMachine {
 	 * Metodo per terminare la procedura di vendita.
 	 * Questo metodo si limita a richiamare il metodo endSale della classe Sale.
 	 */
-	public void endSale() {
+	public void endSale() throws PaymentNotCompletedException {
 		s.setCompleted();
 	}
 	

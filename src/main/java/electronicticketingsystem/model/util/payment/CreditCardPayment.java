@@ -1,5 +1,7 @@
 package electronicticketingsystem.model.util.payment;
 
+import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
+
 /**
  * Classe che descrive una procedura di pagamento con carta di credito. Questa classe implementa
  * l'interfaccia Payment.
@@ -36,11 +38,13 @@ public class CreditCardPayment implements Payment {
 	 * e simula il pagamento considerando che vada a buon fine in tutti i casi in cui la carta non è scaduta.
 	 * @param amount (double)
 	 */
-	public void makePayment(double amount) {
+	public void makePayment(double amount) throws PaymentNotCompletedException {
 		if (creditCard.checkExpiration()) {
 			completed = true;
-		} else
+		} else {
 			completed = false;
+			throw new PaymentNotCompletedException("This credit card is expired");
+		}
 	}
 	
 	/**

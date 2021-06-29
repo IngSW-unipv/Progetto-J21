@@ -1,5 +1,6 @@
 package electronicticketingsystem.model.util.payment;
 
+import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.sale.Cash;
 
 /**
@@ -43,13 +44,16 @@ public class CashPayment implements Payment{
 	/**
 	 * Metodo che simula il pagamento in contanti. Il metodo richiede in ingresso la quantità
 	 * di denaro inserita dall'utente e calcola il resto creando un oggetto della classe Cash 
-	 * che restituisca le varie monete e banconote di resto a fronte di un totale pari all'ammontare
-	 * della spesa meno il denaro inserito. Il metodo contrassegna quindi il pagamento come completato.
+	 * che restituisca le varie monete e banconote di resto a fronte di un totale pari al denaro
+	 * inserito meno l'ammontare della spesa. Il metodo contrassegna quindi il pagamento come completato.
 	 * @param cash (double)
 	 */
-	public void makePayment(double cash) {
-		change=new Cash(amount-cash); 
+	public void makePayment(double cash) throws PaymentNotCompletedException {
+		if (cash >= amount) {
+		change=new Cash(cash-amount); 
 		completed = true;
+		} else 
+			throw new PaymentNotCompletedException("The cash entered is not enough");
 	}
 	
 	/**
