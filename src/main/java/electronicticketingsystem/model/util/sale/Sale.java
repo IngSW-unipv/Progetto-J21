@@ -2,6 +2,11 @@ package electronicticketingsystem.model.util.sale;
 
 import java.util.*;
 
+import electronicticketingsystem.model.util.payment.CashPayment;
+import electronicticketingsystem.model.util.payment.CreditCard;
+import electronicticketingsystem.model.util.payment.CreditCardPayment;
+import electronicticketingsystem.model.util.payment.Payment;
+
 
 /**
  * Classe che descrive una Vendita, vista come una lista di singole componenti.
@@ -43,17 +48,19 @@ public class Sale {
 	}
 	
 	/**
-	 * Metodo per marcare come completata una vendita. Quando viene invocato, il metodo imposta a true
-	 * l'attributo completed, aggiunge al registro dei biglietti venduti gli elementi che compongono 
+	 * Metodo per marcare come completata una vendita (ovvero quando è ricevuro il pagamento). Quando viene invocato, 
+	 * il metodo imposta a true l'attributo completed, aggiunge al registro dei biglietti venduti gli elementi che compongono 
 	 * la vendita e stampa una copia del registro per visualizzare i biglietti venduti.
 	 */
 	public void setCompleted() {
-		System.out.println("Purchased travel documents:");
-		payedTickets = SoldRegister.getInstance();
-		this.completed=true;
-		for (SaleLineItem i : items) {
-			payedTickets.addToRegister(i);
-			System.out.println("ID: " + i.getTicketID()+"\n");
+		if (p.isCompleted()) {
+			System.out.println("Purchased travel documents:");
+			payedTickets = SoldRegister.getInstance();
+			this.completed=true;
+			for (SaleLineItem i : items) {
+				payedTickets.addToRegister(i);
+				System.out.println("ID: " + i.getTicketID()+"\n");
+			}
 		}
 	}
 	
@@ -69,23 +76,34 @@ public class Sale {
 	}
 	
 	/**
-	 * Metodo per effettuare il pagamento della vendita. Viene creato un oggetto di tipo Payment con il totale 
+	 * Metodo per effettuare il pagamento della vendita in contanti. Viene creato un oggetto di tipo CashPayment con il totale 
 	 * dovuto e si invoca il metodo della classe che sottrae al denaro inserito cs il totale per calcolare il
 	 * resto
 	 * @param cs (double)
 	 */
-	public void makePayment(double cs) {
-		p=new Payment(total);
+	public void makeCashPayment(double cs) {
+		p=new CashPayment(total);
 		p.makePayment(cs);
 		//p sarà poi usato per salvare i relativi dati
 	}
 	
 	/**
-	 * Metodo get per ottenere il resto
+	 * Metodo per effettuare il pagamento della vendita con carta di credito. Viene creato un oggetto di tipo CreditCardPayment
+	 * con il totale dovuto e la carta di credito da usare per la vendita e si invoca il metodo della classe che simula il 
+	 * pagamento
+	 * @param cc (CreditCard)
+	 */
+	public void makeCreditCardPayment(CreditCard cc) {
+		p=new CreditCardPayment(total,cc);
+		p.makePayment(total);
+	}
+	
+	/**
+	 * Metodo get per ottenere il resto nel caso di pagamento in contanti.
 	 * @return Cash 			restituisce un oggetto di tipo Cash che corrisponda al resto da erogare
 	 */
 	public Cash getChange() {
-		return p.getChange();
+		return ((CashPayment)p).getChange();
 	}
 
 	/**
