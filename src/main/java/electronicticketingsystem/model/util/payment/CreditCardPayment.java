@@ -39,11 +39,11 @@ public class CreditCardPayment implements Payment {
 	 * @param amount (double)
 	 */
 	public void makePayment(double amount) throws PaymentNotCompletedException {
-		if (creditCard.checkExpiration()) {
+		if ((creditCard.checkExpiration())&&(creditCard.checkCardNumber())&&(creditCard.checkCVV())) {
 			completed = true;
 		} else {
 			completed = false;
-			throw new PaymentNotCompletedException("This credit card is expired");
+			throw new PaymentNotCompletedException("The credit card details are invalid");
 		}
 	}
 	

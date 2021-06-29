@@ -12,6 +12,9 @@ import java.time.YearMonth;
  */
 public class CreditCard {
 
+	public static final int CARD_NUMBER_LENGTH = 16;
+	public static final int CVV_LENGTH = 3;
+	
 	private String nameOnCard;
 	private String cardNumber;
 	private YearMonth expirationDate;
@@ -52,6 +55,20 @@ public class CreditCard {
 	public boolean checkExpiration() {
 		YearMonth currentDate = YearMonth.now();
 		if (currentDate.isAfter(expirationDate)) {
+			return false;
+		} else 
+			return true;
+	}
+	
+	public boolean checkCardNumber() {
+		if (cardNumber.length() != CARD_NUMBER_LENGTH) {
+			return false;
+		} else 
+			return true;
+	}
+	
+	public boolean checkCVV() {
+		if (cvv.length() != CVV_LENGTH) {
 			return false;
 		} else 
 			return true;
