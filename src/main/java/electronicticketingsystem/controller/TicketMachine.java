@@ -1,6 +1,7 @@
 package electronicticketingsystem.controller;
 import java.util.*;
 
+import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.sale.Cash;
 import electronicticketingsystem.model.util.sale.Sale;
 import electronicticketingsystem.model.util.validation.Validation;
@@ -53,18 +54,26 @@ public class TicketMachine {
 	}
 	
 	/**
-	 * Metodo per effettuare il pagamento della vendita. 
-	 * Questo metodo si limita a richiamare il metodo makePayment della classe Sale.
+	 * Metodo per effettuare il pagamento in contanti della vendita. 
+	 * Questo metodo si limita a richiamare il metodo makeCashPayment della classe Sale.
 	 * @param cs (double)
 	 */
-	public void makePayment(double cs) {
-		 s.makePayment(cs);
+	public void makeCashPayment(double cs) {
+		s.makeCashPayment(cs);
 	}
 	
-
 	/**
-	 * Metodo get per ottenere il resto.
-	 * Questo metodo si limita a richiamare il metodo makePayment della classe Sale (che
+	 * Metodo per effettuare il pagamento con carta di credito della vendita. 
+	 * Questo metodo si limita a richiamare il metodo makeCreditCardPayment della classe Sale.
+	 * @param cc (CreditCard)	richiede in ingresso la carta di credito da usare 
+	 */
+	public void makeCreditCardPayment(CreditCard cc) {
+		s.makeCreditCardPayment(cc); 
+	}
+	
+	/**
+	 * Metodo get per ottenere il resto di un pagamento in contanti.
+	 * Questo metodo si limita a richiamare il metodo getChange della classe Sale (che
 	 * a sua volta richiama il metodo analogo della classe Payment)
 	 * @return Cash 
 	 */
