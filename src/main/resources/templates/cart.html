@@ -59,7 +59,7 @@
 			@for (electronicticketingsystem.model.util.sale.SaleLineItem it: items) {
 			<tr> 
 				<td>@(it.getTicketID())</td>
-				<td>1+@(it.getSubTotal())</td> 
+				<td>@(it.getSubTotal())</td> 
 				<td>@(it.getSubTotal())</td>
 			</tr>
 		}
@@ -79,6 +79,7 @@
        		<i class="fa fa-cc-mastercard" style="color:red;font-size:40px"></i>
             <i class="fa fa-cc-discover" style="color:orange;font-size:40px"></i>
       </div><br>
+      <form method="post" action="/payment">
             <label for="cname">Name on card:</label><br>
             <input class="w3-input w3-border w3-hover-red" type="text" id="cname" name="cardname" placeholder="Mario Rossi"  style="width:30%"><br>
             <label for="ccnum">Credit card number:</label>
@@ -89,6 +90,7 @@
             <input class="w3-input w3-border w3-hover-red" type="text" id="cvv" name="cvv" placeholder="352" style="width:30%"><br>
             </div><br>
             <input type="submit" value="Continue to checkout" class="w3-btn w3-red">
+     </form>
    </div>
 
  <!-- Footer -->
