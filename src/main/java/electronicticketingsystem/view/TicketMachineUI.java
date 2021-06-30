@@ -3,7 +3,7 @@ package electronicticketingsystem.view;
 import java.util.*;
 import java.time.YearMonth;
 
-import electronicticketingsystem.controller.TicketInspector;
+
 import electronicticketingsystem.controller.TicketMachine;
 import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.ticket.TicketCatalog;

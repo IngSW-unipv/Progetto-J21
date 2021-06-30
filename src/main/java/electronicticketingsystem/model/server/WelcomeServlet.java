@@ -84,8 +84,7 @@ public class WelcomeServlet extends HttpServlet{
 		CreditCardPayment payment = new CreditCardPayment(this.getSaleTotal(), cc);
 		payment.makePayment(getSaleTotal());
 		if (payment.isCompleted()) {
-			resp.getWriter().write(Rythm.render("<h1>Pagamento andato a buon fine</h1>"));
-			//resp.sendRedirect("/home");
+			resp.getWriter().write(Rythm.render("payment_success.html"));
 		} else {
 			resp.getWriter().write(Rythm.render("<h1>Pagamento fallito</h1>"));
 			//resp.sendRedirect("/cart");
