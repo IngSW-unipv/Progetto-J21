@@ -1,5 +1,6 @@
 package electronicticketingsystem.model.util.validation;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,28 +18,28 @@ import electronicticketingsystem.model.util.ticket.TravelDocument;
 
 public class TicketInspector {
 	private String idInspector;
-	private List<Check> inspections;
 
 	/**
 	 * Costruttore della classe, che si occupa di inizializzare gli attributi idInspector e inspections
 	 */
 	public TicketInspector(String id) {
 		this.idInspector=id;
-		this.inspections=new ArrayList<>();
 	}
 	
-	public void newIspection(String idTicket) {
-		inspections.add(new Check(idTicket));
+	/**
+	 * Questo metodo permette di controllare se un biglietto è in uso.
+	 * @param idTicket 		stringa che identifica il biglietto da controllare 
+	 * @return true se la scadenza della corsa è successiva al tempo attuale
+	 */
+	public boolean newIspection(String idTicket) {
+		ValidationRegister vr=ValidationRegister.getInstance();
+		Validation ticket=vr.findValidation(idTicket); 
+		if (ticket.equals(null)) return false;
+		else return ticket.getExpirationTime().isAfter(LocalTime.now());
 	}
 	
 	public String getIdInspector() {
 		return this.idInspector;
 	}
 	
-	public void printInspectionsList() {
-		System.out.println(this.idInspector+":\n");
-		for (Check c : inspections) {
-			System.out.println(c + "/n");
-		}
-	}
 }

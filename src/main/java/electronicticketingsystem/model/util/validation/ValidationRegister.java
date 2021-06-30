@@ -48,7 +48,7 @@ public class ValidationRegister {
 	 * @param id						l'ID del biglietto del quale si vuole ottenere la convalida
 	 * @return Validation				restituisce un oggetto di tipo Validation corrispondente all'id inserito
 	 */
-	public static Validation findValidation(String id) {
+	public Validation findValidation(String id) {
 		for(Validation i: stampedTickets) {
 			if(i.getID().equals(id)) return i;
 		} return null; //se non viene trovato alcun elemento corrispondente ritorna null

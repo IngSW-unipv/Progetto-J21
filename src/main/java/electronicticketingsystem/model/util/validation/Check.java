@@ -24,7 +24,8 @@ public class Check {
 	 * @param id				stringa che indica l'id del biglietto da controllare
 	 */
 	public Check(String id)  {
-		this.ticketToControl=ValidationRegister.findValidation(id);
+		ValidationRegister vr=ValidationRegister.getInstance();
+		this.ticketToControl=vr.findValidation(id);
 		if(ticketToControl.equals(null)) this.validity=false;
 		else {
 			LocalTime t=LocalTime.now();
