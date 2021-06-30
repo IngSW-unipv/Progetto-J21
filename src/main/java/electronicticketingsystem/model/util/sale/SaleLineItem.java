@@ -39,6 +39,16 @@ public class SaleLineItem {
 		else this.accesses=1;	
 	}
 	
+	public SaleLineItem(TravelDocument ticket) {
+		
+		this.price=ticket.getPrice();
+		this.time=ticket.getTimeToAdd();
+		this.ticketID = generateTicketID(ticket);
+		
+		if(ticket.getType()==2) this.accesses=((Carnet) ticket).getAccessesNumber();
+		else this.accesses=1;	
+	}
+	
 	/**
 	 * Metodo get per ottenere il prezzo di un biglietto, che costrituisce il subtotale 
 	 * della vendita

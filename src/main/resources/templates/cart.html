@@ -1,8 +1,8 @@
-<!-- @import electronicticketingsystem.model.util.sale.Sale
+
 
 @args() {
-	Sale sale
-}  -->
+	ArrayList<electronicticketingsystem.model.util.sale.SaleLineItem> items
+}  
 
 <!DOCTYPE html>
 <html>
@@ -56,15 +56,17 @@
 	  </thead>
 	  <tbody>
 	 
+			@for (electronicticketingsystem.model.util.sale.SaleLineItem it: items) {
 			<tr> 
-				<td>2</td>
-				<td>1</td> 
-				<td>3</td>
+				<td>@(it.getTicketID())</td>
+				<td>1+@(it.getSubTotal())</td> 
+				<td>@(it.getSubTotal())</td>
 			</tr>
-	  
+		}
+
 		</tbody>
     </table><br>
-    <a href="purchase.html" class="w3-theme w3-button">Continue shopping</a>
+    <a href="/purchase" class="w3-theme w3-button">Continue shopping</a>
    </div>
    
   <div class="w3-container w3-padding w3-half">
