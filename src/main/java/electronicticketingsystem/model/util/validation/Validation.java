@@ -30,9 +30,8 @@ public class Validation {
 	 * corrente).
 	 */
 	private void setExpirationTime() {
-		this.expirationTime=LocalTime.now(); //Obtains the current time from the system clock in the default time-zone.
 		SaleLineItem ticket=SoldRegister.returnTicket(id);
-	    expirationTime.plusHours(ticket.getTime()); //Returns a copy of this LocalTime with the specified number of hours added.
+	    this.expirationTime=LocalTime.now().plusHours(ticket.getTime()); //Returns a copy of this LocalTime with the specified number of hours added.
 		
 	}
 	
