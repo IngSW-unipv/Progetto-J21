@@ -3,6 +3,7 @@ package electronicticketingsystem.test;
 import java.util.Scanner;
 
 import electronicticketingsystem.model.util.ticket.*;
+import electronicticketingsystem.view.TicketInspectorUI;
 import electronicticketingsystem.view.TicketMachineUI;
 
 /**
@@ -20,11 +21,20 @@ public class TicketTester {
 		Scanner s=new Scanner(System.in);
 		TicketCatalog catalog = new TicketCatalog();
 		
-		TicketMachineUI ui=new TicketMachineUI(s);
+		TicketMachineUI uiM=new TicketMachineUI(s);
+		TicketInspectorUI uiI=new TicketInspectorUI(s);
 		
-		
-		ui.start(catalog); 
-		
+		int choice;
+		do {
+			System.out.println("1-Traveler\n2-TicketInspector");
+			choice=s.nextInt();
+			if(choice==1)
+				uiM.start(catalog);
+			else if(choice==2)
+				uiI.start();
+			else 
+				System.out.println("The option you selected is not valid, please try again\n");	
+		}while(true);
 	}
 }
  

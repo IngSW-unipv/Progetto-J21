@@ -3,10 +3,10 @@ package electronicticketingsystem.view;
 import java.util.*;
 import java.time.YearMonth;
 
+import electronicticketingsystem.controller.TicketInspector;
 import electronicticketingsystem.controller.TicketMachine;
 import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.ticket.TicketCatalog;
-import electronicticketingsystem.model.util.validation.TicketInspector;
 import electronicticketingsystem.model.util.exceptions.*;
 
 /**
@@ -48,7 +48,7 @@ public class TicketMachineUI {
 	public void start(TicketCatalog cat) {
 		
 		do {
-			System.out.println("1 - Validation\n2 - Purchase\n3 - Ticket Inspectors' Reserved Area\n9 - End");
+			System.out.println("1 - Validation\n2 - Purchase\n9 - End");
 			choice=s.nextInt();
 			switch(choice) {
 				case 1: 
@@ -106,18 +106,8 @@ public class TicketMachineUI {
 							System.out.println("The payment method you selected is not valid\n");
 					};
 				break;
-				case 3:
-					System.out.println("Please submit your Ticket Inspector Id: ");
-					String inspectorId = s.next();
-					TicketInspector ti = new TicketInspector(inspectorId);
-					
-					System.out.println("Enter the ID of the ticket to be checked: ");
-					String ticketId = s.next();
-					if(ti.newInspection(ticketId)==false) System.out.println("This travel document isn't valid!");
-					else System.out.println("The travel document with ID "+ticketId+" is valid.");
-				break;
-				default:
-					System.out.println("The option you selected is not valid, please try again\n");
+				//default:
+					//System.out.println("The option you selected is not valid, please try again\n");
 			};
 		}while(choice !=9);
 	}

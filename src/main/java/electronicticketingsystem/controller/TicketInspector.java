@@ -1,10 +1,12 @@
-package electronicticketingsystem.model.util.validation;
+package electronicticketingsystem.controller;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import electronicticketingsystem.model.util.ticket.TravelDocument;
+import electronicticketingsystem.model.util.validation.Validation;
+import electronicticketingsystem.model.util.validation.ValidationRegister;
 
 
 /**
@@ -18,12 +20,14 @@ import electronicticketingsystem.model.util.ticket.TravelDocument;
 
 public class TicketInspector {
 	private String idInspector;
+	private String psw;
 
 	/**
 	 * Costruttore della classe, che si occupa di inizializzare gli attributi idInspector e inspections
 	 */
-	public TicketInspector(String id) {
+	public TicketInspector(String id,String psw) {
 		this.idInspector=id;
+		this.psw=psw;
 	}
 	
 	/**
@@ -31,15 +35,19 @@ public class TicketInspector {
 	 * @param idTicket 		stringa che identifica il biglietto da controllare 
 	 * @return true se la scadenza della corsa è successiva al tempo attuale
 	 */
-	public boolean newInspection(String idTicket) {
+	public boolean inspection(String TicketID) {
 		ValidationRegister vr=ValidationRegister.getInstance();
-		Validation ticket=vr.findValidation(idTicket); 
+		Validation ticket=vr.findValidation(TicketID); 
 		if (ticket.equals(null)) return false;
 		else return ticket.getExpirationTime().isAfter(LocalTime.now());
 	}
 	
 	public String getIdInspector() {
 		return this.idInspector;
+	}
+	
+	public String getPassword(){
+		return this.psw;
 	}
 	
 }
