@@ -50,7 +50,7 @@ public class SoldRegister {
 	 * @param id					id dell'articolo da ricercare
 	 * @return SaleLineItem
 	 */
-	public static SaleLineItem returnTicket(String id) {
+	public SaleLineItem returnTicket(String id) {
 		int soldRegisterIndex = 0;
 		for (SaleLineItem i : payedTickets) {
 			if (i.getTicketID() == id) {

@@ -20,20 +20,11 @@ public class Validation {
 	 */
 	public Validation(String id) {
 		this.id = id;
-		setExpirationTime();
-		SoldRegister.returnTicket(id).setOneAccessLess(); //quando viene effettuata una convalida si abbassa di uno il contatore delle corse
+		SoldRegister sr=SoldRegister.getInstance();
+		this.expirationTime=LocalTime.now().plusHours(sr.returnTicket(id).getTime()); //imposta il tempo di scadenza sommando il tempo now e la durata del biglietto
+		sr.returnTicket(id).setOneAccessLess(); //quando viene effettuata una convalida si abbassa di uno il contatore delle corse
 	}
-	
-	/**
-	 * Metodo per il calcolo dell'orario di scadenza del biglietto tramite la classe LocalTime del package java.time
-	 * Il metodo aggiunge le ore di validità previste dal tipo di biglietto all'orario di convalida (cioè quello 
-	 * corrente).
-	 */
-	private void setExpirationTime() {
-		SaleLineItem ticket=SoldRegister.returnTicket(id);
-	    this.expirationTime=LocalTime.now().plusHours(ticket.getTime()); //Returns a copy of this LocalTime with the specified number of hours added.
-		
-	}
+
 	
 	/**
 	 * Metodo get per risalire all'orario di scadenza del biglietto 
