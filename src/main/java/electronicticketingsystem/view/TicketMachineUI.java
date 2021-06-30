@@ -6,6 +6,7 @@ import java.time.YearMonth;
 import electronicticketingsystem.controller.TicketMachine;
 import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.ticket.TicketCatalog;
+import electronicticketingsystem.model.util.validation.TicketInspector;
 import electronicticketingsystem.model.util.exceptions.*;
 
 /**
@@ -100,10 +101,18 @@ public class TicketMachineUI {
 							} catch (PaymentNotCompletedException e) {
 								e.printStackTrace();
 							}
-							
 					};
+				break;
+				case 3:
+					System.out.println("Please submit your Ticket Inspector Id: ");
+					String inspectorId = s.next();
+					TicketInspector ti = new TicketInspector(inspectorId);
 					
-					
+					System.out.println("Enter the ID of the ticket to be checked: ");
+					String ticketId = s.next();
+					if(ti.newIspection(ticketId)==false) System.out.println("This travel document isn't valid!");
+					else System.out.println("The travel document with ID "+ticketId+" is valid.");
+				break;
 			};
 		}while(choice !=9);
 	}
