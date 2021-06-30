@@ -48,7 +48,7 @@ public class TicketMachineUI {
 	public void start(TicketCatalog cat) {
 		
 		do {
-			System.out.println("1 - Validation\n2 - Purchase\n9 - End");
+			System.out.println("1 - Validation\n2 - Purchase\n3 - Ticket Inspectors' Reserved Area\n9 - End");
 			choice=s.nextInt();
 			switch(choice) {
 				case 1: 
@@ -101,6 +101,9 @@ public class TicketMachineUI {
 							} catch (PaymentNotCompletedException e) {
 								e.printStackTrace();
 							}
+						break;
+						default:
+							System.out.println("The payment method you selected is not valid\n");
 					};
 				break;
 				case 3:
@@ -110,9 +113,11 @@ public class TicketMachineUI {
 					
 					System.out.println("Enter the ID of the ticket to be checked: ");
 					String ticketId = s.next();
-					if(ti.newIspection(ticketId)==false) System.out.println("This travel document isn't valid!");
+					if(ti.newInspection(ticketId)==false) System.out.println("This travel document isn't valid!");
 					else System.out.println("The travel document with ID "+ticketId+" is valid.");
 				break;
+				default:
+					System.out.println("The option you selected is not valid, please try again\n");
 			};
 		}while(choice !=9);
 	}

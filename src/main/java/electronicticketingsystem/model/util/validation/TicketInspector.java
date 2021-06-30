@@ -31,7 +31,7 @@ public class TicketInspector {
 	 * @param idTicket 		stringa che identifica il biglietto da controllare 
 	 * @return true se la scadenza della corsa è successiva al tempo attuale
 	 */
-	public boolean newIspection(String idTicket) {
+	public boolean newInspection(String idTicket) {
 		ValidationRegister vr=ValidationRegister.getInstance();
 		Validation ticket=vr.findValidation(idTicket); 
 		if (ticket.equals(null)) return false;
