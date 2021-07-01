@@ -40,13 +40,13 @@
   
   <div class="w3-container w3-padding w3-half">
       <h2>Shopping Cart</h2>
-      <table class="w3-table-all w3-card-2 w3-white">
+      <table class="w3-table-all w3-centered w3-card-2 w3-white">
       <thead>
 	      <tr>
 	        <th>Ticket ID</th>
 	        <th>Quantity</th>
 	        <th class="w3-center">Price</th>
-	        <th><a href="/purchase" class="w3-btn w3-grey w3-text-white">+ Add another item</a></th>
+	        <!-- <th><a href="/purchase" class="w3-btn w3-grey w3-text-white">+ Add another item</a></th> -->
 	      </tr>
 	  </thead>
 	  <tbody>
@@ -55,12 +55,14 @@
 			<tr> 
 				<td>@(it.getTicketID())</td>
 				<td>1</td> 
-				<td>@(it.getSubTotal())</td>
+				<td>@(it.getSubTotal()) &euro;</td>
 			</tr>
 		}
 		</tbody>
     </table><br>
-    <a href="/purchase" class="w3-theme w3-button">Continue shopping</a>
+    <a href="/purchase" class="w3-theme w3-button"><span class="fa fa-plus"></span>&nbsp;&nbsp;Add another item</a>
+    &nbsp;&nbsp;
+    <a href="/remove" class="w3-theme w3-button"><span class="fa fa-times"></span>&nbsp;&nbsp;Remove all items</a>
    </div>
    
   <div class="w3-container w3-padding w3-half">
@@ -69,7 +71,7 @@
       <label for="fname">Accepted Cards:</label>
       <div>
         	<i class="fa fa-cc-visa" style="color:navy;font-size:40px"></i>
-        	<i class="fa fa-cc-amex" style="color:blue;font-size:40px"></i>
+        	<i class="fa fa-cc-jcb" style="color:blue;font-size:40px"></i>
        		<i class="fa fa-cc-mastercard" style="color:red;font-size:40px"></i>
             <i class="fa fa-cc-discover" style="color:orange;font-size:40px"></i>
       </div><br>

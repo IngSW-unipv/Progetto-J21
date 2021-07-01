@@ -14,18 +14,20 @@ import org.rythmengine.Rythm;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.payment.*;
 import electronicticketingsystem.model.util.sale.SaleLineItem;
+import electronicticketingsystem.model.util.sale.SoldRegister;
 import electronicticketingsystem.model.util.ticket.*;
 
 public class WelcomeServlet extends HttpServlet{
 	
 	TicketCatalog catalog = new TicketCatalog();
 	ArrayList<SaleLineItem> items=new ArrayList<>();
+	SoldRegister sr = SoldRegister.getInstance();
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		try {
 			requests(req,resp);
 		} catch (PaymentNotCompletedException e) {
-			e.printStackTrace();
+			paymentFailed(req, resp);
 		}
 		
 	}
@@ -37,7 +39,7 @@ public class WelcomeServlet extends HttpServlet{
 		try {
 			requests(req,resp);
 		} catch (PaymentNotCompletedException e) {
-			e.printStackTrace();
+			paymentFailed(req,resp);
 		}
 		
 	}
@@ -53,6 +55,8 @@ public class WelcomeServlet extends HttpServlet{
 			cart(req,resp);
 		if(req.getPathInfo().equals("/payment")) 
 			payment(req,resp);
+		if(req.getPathInfo().equals("/remove")) 
+			removeFromCart(req,resp);
 
 	}
 	
@@ -78,6 +82,11 @@ public class WelcomeServlet extends HttpServlet{
 		resp.getWriter().write(Rythm.render("cart.html", items));
 	}
 	
+	protected void removeFromCart(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException {
+		items.clear();
+		resp.getWriter().write(Rythm.render("cart.html", items));
+	}
+	
 	protected void payment(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException, PaymentNotCompletedException {
 		String expDate = req.getParameter("expmonth");
 		CreditCard cc = new CreditCard(req.getParameter("cardname"), req.getParameter("cardnumber"), YearMonth.parse(expDate), req.getParameter("cvv"));
@@ -85,9 +94,12 @@ public class WelcomeServlet extends HttpServlet{
 		payment.makePayment(getSaleTotal());
 		if (payment.isCompleted()) {
 			resp.getWriter().write(Rythm.render("payment_success.html"));
+			for (SaleLineItem i : items) {
+				sr.addToRegister(i);
+			}
+			items.clear();
 		} else {
-			resp.getWriter().write(Rythm.render("<h1>Pagamento fallito</h1>"));
-			//resp.sendRedirect("/cart");
+			paymentFailed(req,resp);
 		}
 			
 	}
@@ -99,7 +111,13 @@ public class WelcomeServlet extends HttpServlet{
 		}
 		return total;
 	}
-
+	
+	protected void paymentFailed(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
+		resp.getWriter().write(Rythm.render("payment_failed.html"));
+	}
+	
 }
+
+
 
 
