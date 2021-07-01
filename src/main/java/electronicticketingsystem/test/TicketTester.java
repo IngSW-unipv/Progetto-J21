@@ -2,6 +2,7 @@ package electronicticketingsystem.test;
 
 import java.util.Scanner;
 
+import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
 import electronicticketingsystem.model.util.ticket.*;
 import electronicticketingsystem.view.TicketInspectorUI;
 import electronicticketingsystem.view.TicketMachineUI;
@@ -15,8 +16,9 @@ public class TicketTester {
 	 * Metodo main che crea l'oggetto Scanner per l'inserimento di comandi da pate dell'utente, il catalogo
 	 * dei prodotti, l'oggetto Controller e fa partire l'interfaccia utente.
 	 * @param args			parametri in ingresso al metodo main (non utilizzati)
+	 * @throws TicketTypeNotExistingException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws TicketTypeNotExistingException {
 		// TODO Auto-generated method stub
 		Scanner s=new Scanner(System.in);
 		TicketCatalog catalog = new TicketCatalog();

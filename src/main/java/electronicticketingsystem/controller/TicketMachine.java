@@ -2,6 +2,7 @@ package electronicticketingsystem.controller;
 import java.util.*;
 
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
+import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
 import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.sale.Cash;
 import electronicticketingsystem.model.util.sale.Sale;
@@ -40,8 +41,9 @@ public class TicketMachine {
 	 * Questo metodo si limita a richiamare il metodo enterItem della classe Sale.
 	 * @param type			valore int, indica il tipo di biglietto selezionato
 	 * @param qty			valore int, indica la quantità di biglietti di quel tipo
+	 * @throws TicketTypeNotExistingException 
 	 */
-	public void enterItem(int type,int qty) {
+	public void enterItem(int type,int qty) throws TicketTypeNotExistingException {
 		s.enterItem(type, qty);
 	}
 	
