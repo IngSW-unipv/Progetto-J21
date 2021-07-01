@@ -3,6 +3,7 @@ package electronicticketingsystem.model.util.sale;
 import java.util.*;
 
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
+import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
 import electronicticketingsystem.model.util.payment.CashPayment;
 import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.payment.CreditCardPayment;
@@ -22,9 +23,10 @@ import electronicticketingsystem.model.util.payment.Payment;
  * 
  */
 public class Sale {
+	private final int TYPEACCEPTED=3;
 	private boolean completed;
 	private List<SaleLineItem> items;
-	private double total; //meglio se viene recuperato da TicketDescription
+	private double total; 
 	private Payment p;
 	private SoldRegister payedTickets;
 	
@@ -41,10 +43,14 @@ public class Sale {
 	 * Metodo per l'aggiunta dei singoli elementi di una vendita all'interno dell'array list items.
 	 * @param type				valore int, indica il tipo di biglietto selezionato
 	 * @param qty				valore int, indica la quantità di biglietti di quel tipo
+	 * @throws TicketTypeNotExistingException 
 	 */
-	public void enterItem(int type,int qty) {
+	public void enterItem(int type,int qty) throws TicketTypeNotExistingException {
+		if(type>TYPEACCEPTED) throw new TicketTypeNotExistingException("Ticket Type has not been accepted!");
 		for(int i=0;i<qty;i++) {
-			items.add(new SaleLineItem(type));
+			SaleLineItem sli=new SaleLineItem(type);
+			items.add(sli);
+			this.total+=sli.getSubTotal();
 		}	 
 	}
 	
@@ -74,10 +80,7 @@ public class Sale {
 	 * @return total (double)
 	 */
 	public double getTotal() {
-		for(SaleLineItem i: items) {
-			total+=i.getSubTotal();			
-		}
-		return total;
+		return this.total;
 	}
 	
 	/**
