@@ -64,11 +64,15 @@ public class TicketMachineUI {
 						cat.printTicketCatalog();
 						System.out.println("9 - Payment");
 						type=s.nextInt();
-						if(type!=9) {
+						if(type>0 && type<4) {
 							System.out.println("Please, enter quantity");
 							qty=s.nextInt();
-							tm.enterItem(type,qty);
-						}
+							if(qty>0)
+								tm.enterItem(type,qty);
+							else
+								System.out.println("Invalid quantity\n");
+						}else
+							System.out.println("The option you selected is not valid, please try again\n");
 					}while(type !=9);
 					System.out.println("The total is: "+ tm.getTotal());
 					System.out.println("Please, choose your payment method:\n1 - Cash\n2 - Credit Card");
@@ -106,8 +110,7 @@ public class TicketMachineUI {
 							System.out.println("The payment method you selected is not valid\n");
 					};
 				break;
-				//default:
-					//System.out.println("The option you selected is not valid, please try again\n");
+				
 			};
 		}while(choice !=9);
 	}
