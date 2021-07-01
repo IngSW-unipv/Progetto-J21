@@ -31,9 +31,6 @@ public class WelcomeServlet extends HttpServlet{
 		}
 		
 	}
-		
-
-	
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		try {
@@ -93,7 +90,7 @@ public class WelcomeServlet extends HttpServlet{
 		CreditCardPayment payment = new CreditCardPayment(this.getSaleTotal(), cc);
 		payment.makePayment(getSaleTotal());
 		if (payment.isCompleted()) {
-			resp.getWriter().write(Rythm.render("payment_success.html"));
+			resp.getWriter().write(Rythm.render("payment_success.html", items));
 			for (SaleLineItem i : items) {
 				sr.addToRegister(i);
 			}
