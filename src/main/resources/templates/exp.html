@@ -1,19 +1,23 @@
+@args {
+String time
+}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-<title>Validate Your Travel Document</title>
-<meta charset="UTF-8">
+<!-- Meta tags -->
+<title>Expiration Time</title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-red.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 	<style>
 		body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-	</style>
-	
+</style>
 </head>
 <body>
 <!-- Side Navigation -->
@@ -23,40 +27,27 @@
   <a href="/" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
   <a href="https://github.com/IngSW-unipv/Progetto-J21" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Contact Us</a>
 </nav>
-
 <!-- Header -->
-<header class="w3-container w3-theme w3-padding" id="myHeader">
+<header class="w3-display-container w3-centered w3-theme w3-padding" id="myHeader">
   <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
   <div class="w3-center">
   <h4>Electronic Ticketing System</h4>
-  <h1>Validate your travel document!</h1>
+  <h1 class="w3-xxxlarge w3-animate-bottom ">Validation successfully completed!</h1>
   <br><br>
   </div>
 </header>
-
-<div class="w3-container w3-padding-32" style="margin-left:450px">
-<div class="w3-container w3-card-4 w3-light-grey w3-text-red w3-margin" style="width:50%">
-<form method="post" action="/expiration"><br>
-<h4 class="w3-center">Insert the <b>ID</b> of the travel document you want to validate</h4><br>
- 
-<div class="w3-row w3-section">
-  <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-ticket"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" name="id" type="text" placeholder="Ticket ID">
-    </div>
-</div><br><br><br>
-
-<button type="submit" class="w3-button w3-block w3-section w3-red w3-ripple w3-padding">Validate</button>
-
-</form>
+<br>
+<div class="w3-container w3-center w3-padding">
+<i class="fa fa-bus w3-margin-bottom w3-margin-top w3-text-theme" style="font-size:180px"></i><br><br>  
+<h2>Your ticket will expire at @time</h2>
+<br><br>
+<a href="/" class="w3-btn w3-red w3-round-xxlarge"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Home</a>
 </div>
-</div>
-
+  <br>
 <!-- Footer -->
 <footer class="w3-light-grey w3-container w3-padding">
   <p class="w3-center" style="margin-top:15px">Powered by <a href="https://github.com/IngSW-unipv/Progetto-J21" title="Gruppo-J21" target="_blank" class="w3-hover-opacity">Gruppo-J21</a></p>
 </footer>
-
 
 <script>
 // Side navigation
@@ -72,6 +63,4 @@ function w3_close() {
 }
 
 </script>
-
 </body>
-</html>

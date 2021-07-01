@@ -1,5 +1,6 @@
 @args() {
 	ArrayList<electronicticketingsystem.model.util.sale.SaleLineItem> items
+	double total
 }  
 <!DOCTYPE html>
 <html>
@@ -60,6 +61,7 @@
 		}
 		</tbody>
     </table><br>
+    <p>Total is: @total</p>
     <a href="/purchase" class="w3-theme w3-button"><span class="fa fa-plus"></span>&nbsp;&nbsp;Add another item</a>
     &nbsp;&nbsp;
     <a href="/remove" class="w3-theme w3-button"><span class="fa fa-times"></span>&nbsp;&nbsp;Remove all items</a>
