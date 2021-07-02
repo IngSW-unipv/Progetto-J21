@@ -56,7 +56,12 @@ public class TicketMachineUI {
 					String id;
 					System.out.println("Please, enter the ID of the ticket you want to validate");
 					id = s.next();
-					tm.validation(id);
+					try {
+						tm.validation(id);
+					} catch (TicketNotFoundException e) {
+						e.printStackTrace();
+					}
+					
 				break;
 				case 2:
 					tm.makeSale();
@@ -65,54 +70,61 @@ public class TicketMachineUI {
 						cat.printTicketCatalog();
 						System.out.println("9 - Payment");
 						type=s.nextInt();
-						if(type>0 && type<4) {
+						if (type!=9) {
 							System.out.println("Please, enter quantity");
 							qty=s.nextInt();
-							if(qty>0)
+							try {
 								tm.enterItem(type,qty);
-							else
-								System.out.println("Invalid quantity\n");
-						}else
-							System.out.println("The option you selected is not valid, please try again\n");
-					}while(type !=9);
-					System.out.println("The total is: "+ tm.getTotal());
-					System.out.println("Please, choose your payment method:\n1 - Cash\n2 - Credit Card");
-					int paymentMethod=s.nextInt();
-					switch(paymentMethod) {
-						case 1:
-							System.out.println("Please, enter cash");
-							double cs=s.nextDouble();
-							tm.makeCashPayment(cs);
-							System.out.println("The change is: \n" + tm.getChange());
-							try {
-								tm.endSale();
-							} catch (PaymentNotCompletedException e) {
+							} catch (TicketTypeNotExistingException e) {
+								e.printStackTrace();
+							} catch (InvalidQuantityException e) {
 								e.printStackTrace();
 							}
+						}
+						
+					} while(type !=9);
+					try {
+						System.out.println("The total is: "+ tm.getTotal());
+						System.out.println("Please, choose your payment method:\n1 - Cash\n2 - Credit Card");
+						int paymentMethod=s.nextInt();
+						switch(paymentMethod) {
+							case 1:
+								System.out.println("Please, enter cash");
+								double cs=s.nextDouble();
+								tm.makeCashPayment(cs);
+								System.out.println("The change is: \n" + tm.getChange());
+								try {
+									tm.endSale();
+								} catch (PaymentNotCompletedException e) {
+									e.printStackTrace();
+								}
 							
-						break;
-						case 2:
-							System.out.println("Please submit your credit card details\nCard Number:");
-							String cardNumber = s.next();
-							System.out.println("Expiration Date:");
-							String exp = s.next();
-							YearMonth expDate = YearMonth.parse(exp);
-							System.out.println("CVV:");
-							String cvv = s.next();
-							CreditCard cc = new CreditCard(cardNumber, expDate, cvv);
-							tm.makeCreditCardPayment(cc);
-							try {
-								tm.endSale();
-							} catch (PaymentNotCompletedException e) {
-								e.printStackTrace();
-							}
-						break;
-						default:
+								break;
+							case 2:
+								System.out.println("Please submit your credit card details\nCard Number:");
+								String cardNumber = s.next();
+								System.out.println("Expiration Date:");
+								String exp = s.next();
+								YearMonth expDate = YearMonth.parse(exp);
+								System.out.println("CVV:");
+								String cvv = s.next();
+								CreditCard cc = new CreditCard(cardNumber, expDate, cvv);
+								tm.makeCreditCardPayment(cc);
+								try {
+									tm.endSale();
+								} catch (PaymentNotCompletedException e) {
+									e.printStackTrace();
+								}
+								break;
+							default:
 							System.out.println("The payment method you selected is not valid\n");
-					};
-				break;
+						};
+						break;
+					} catch (InvalidAmountException e) {
+						e.printStackTrace();
+					}
 				
-			};
+					};
 		}while(choice !=9);
 	}
 

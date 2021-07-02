@@ -14,6 +14,7 @@ import org.rythmengine.Rythm;
 
 import electronicticketingsystem.controller.TicketInspector;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
+import electronicticketingsystem.model.util.exceptions.TicketNotFoundException;
 import electronicticketingsystem.model.util.payment.*;
 import electronicticketingsystem.model.util.sale.SaleLineItem;
 import electronicticketingsystem.model.util.sale.SoldRegister;
@@ -33,7 +34,9 @@ public class WelcomeServlet extends HttpServlet{
 		try {
 			requests(req,resp);
 		} catch (PaymentNotCompletedException e) {
-			paymentFailed(req, resp);
+			paymentFailed(req,resp);
+		} catch (TicketNotFoundException e) {
+			validationFailed(req,resp);
 		}
 		
 	}
@@ -43,11 +46,13 @@ public class WelcomeServlet extends HttpServlet{
 			requests(req,resp);
 		} catch (PaymentNotCompletedException e) {
 			paymentFailed(req,resp);
+		} catch (TicketNotFoundException e) {
+			validationFailed(req,resp);
 		}
 		
 	}
 	
-	protected void requests(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException,PaymentNotCompletedException{
+	protected void requests(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException, PaymentNotCompletedException, TicketNotFoundException {
 		if(req.getPathInfo().equals("/")) {
 			home(req,resp);}
 		if(req.getPathInfo().equals("/purchase") )
@@ -125,14 +130,18 @@ public class WelcomeServlet extends HttpServlet{
 	
 	protected void validateTicket(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
 		resp.getWriter().write(Rythm.render("validation.html"));
+	}
+	
+	protected void expiration(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException, TicketNotFoundException {
 		String id = req.getParameter("id");
 		v = new Validation(id);
 		ValidationRegister.getInstance().addToRegister(v);
-	}
-	
-	protected void expiration(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
 		String exp = v.getExpirationTime().toString();
 		resp.getWriter().write(Rythm.render("exp.html", exp));
+	}
+	
+	protected void validationFailed(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
+		resp.getWriter().write(Rythm.render("<h1>ID not valid</h1>"));
 	}
 
 	

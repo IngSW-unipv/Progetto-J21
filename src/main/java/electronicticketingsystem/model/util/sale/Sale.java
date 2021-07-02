@@ -2,6 +2,8 @@ package electronicticketingsystem.model.util.sale;
 
 import java.util.*;
 
+import electronicticketingsystem.model.util.exceptions.InvalidAmountException;
+import electronicticketingsystem.model.util.exceptions.InvalidQuantityException;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
 import electronicticketingsystem.model.util.payment.CashPayment;
@@ -45,13 +47,19 @@ public class Sale {
 	 * @param qty				valore int, indica la quantità di biglietti di quel tipo
 	 * @throws TicketTypeNotExistingException 
 	 */
-	public void enterItem(int type,int qty) throws TicketTypeNotExistingException {
-		if(type>TYPEACCEPTED) throw new TicketTypeNotExistingException("Ticket Type has not been accepted!");
-		for(int i=0;i<qty;i++) {
-			SaleLineItem sli=new SaleLineItem(type);
-			items.add(sli);
-			this.total+=sli.getSubTotal();
-		}	 
+	public void enterItem(int type,int qty) throws TicketTypeNotExistingException, InvalidQuantityException {
+		if(type>TYPEACCEPTED) {
+			throw new TicketTypeNotExistingException("The ticket type you selected is not valid!");
+		} else if (qty <= 0) {
+			throw new InvalidQuantityException();
+		} else {
+			for(int i=0;i<qty;i++) {
+				SaleLineItem sli=new SaleLineItem(type);
+				items.add(sli);
+				this.total+=sli.getSubTotal();
+			}	 
+		}
+		
 	}
 	
 	/**
@@ -79,8 +87,11 @@ public class Sale {
 	 * Metodo per il calcolo del prezzo totale della vendita
 	 * @return total (double)
 	 */
-	public double getTotal() {
-		return this.total;
+	public double getTotal() throws InvalidAmountException {
+		if (this.total > 0.0) {
+			return this.total;
+		} else
+			throw new InvalidAmountException();
 	}
 	
 	/**
@@ -125,11 +136,4 @@ public class Sale {
 		return ((CashPayment)p).getChange();
 	}
 
-	/**
-	 * Metodo get per risalire alla lista di elementi che costituiscono la vendita
-	 * @return items (List<SaleLineItem>)
-	 */
-	public List<SaleLineItem> getItems() {
-		return items;
-	}
 }

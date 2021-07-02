@@ -1,7 +1,10 @@
 package electronicticketingsystem.controller;
 import java.util.*;
 
+import electronicticketingsystem.model.util.exceptions.InvalidAmountException;
+import electronicticketingsystem.model.util.exceptions.InvalidQuantityException;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
+import electronicticketingsystem.model.util.exceptions.TicketNotFoundException;
 import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
 import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.sale.Cash;
@@ -43,7 +46,7 @@ public class TicketMachine {
 	 * @param qty			valore int, indica la quantità di biglietti di quel tipo
 	 * @throws TicketTypeNotExistingException 
 	 */
-	public void enterItem(int type,int qty) throws TicketTypeNotExistingException {
+	public void enterItem(int type,int qty) throws TicketTypeNotExistingException, InvalidQuantityException {
 		s.enterItem(type, qty);
 	}
 	
@@ -52,7 +55,7 @@ public class TicketMachine {
 	 * Questo metodo si limita a richiamare il metodo getTotal della classe Sale.
 	 * @return total (double)
 	 */
-	public double getTotal() {
+	public double getTotal() throws InvalidAmountException {
 		return s.getTotal();
 	}
 	
@@ -101,10 +104,11 @@ public class TicketMachine {
 	 * a video una lista degli ID dei biglietti convalidati.
 	 * @param ticketID (String)
 	 */
-	public void validation(String ticketID) {
+	public void validation(String ticketID) throws TicketNotFoundException {
 		vr = ValidationRegister.getInstance();
 		vr.addToRegister(new Validation(ticketID));
 		vr.printValidationRegister();
+		
 	}
 
 	

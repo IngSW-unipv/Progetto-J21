@@ -35,11 +35,13 @@ public class TicketInspector {
 	 * @param idTicket 		stringa che identifica il biglietto da controllare 
 	 * @return true se la scadenza della corsa è successiva al tempo attuale
 	 */
-	public boolean inspection(String TicketID) {
+	public boolean inspection(String TicketID)  {
 		ValidationRegister vr=ValidationRegister.getInstance();
 		Validation ticket=vr.findValidation(TicketID); 
-		if (ticket.equals(null)) return false;
-		else return ticket.getExpirationTime().isAfter(LocalTime.now());
+		if (ticket.equals(null)) 
+			return false;
+		else 
+			return ticket.getExpirationTime().isAfter(LocalTime.now());
 	}
 	
 	public String getIdInspector() {
