@@ -37,7 +37,7 @@ public class SaleTest {
 	}
 	
 	@Test
-	public void test() throws TicketTypeNotExistingException, InvalidQuantityException, PaymentNotCompletedException {
+	public void test() throws TicketTypeNotExistingException, InvalidQuantityException, PaymentNotCompletedException, InvalidAmountException {
 		s.enterItem(1, 1);
 		Cash c=new Cash(0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0);
 		s.makeCashPayment(c.getAmount());

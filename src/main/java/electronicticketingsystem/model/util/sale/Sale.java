@@ -101,10 +101,11 @@ public class Sale {
 	 * dovuto e si invoca il metodo della classe che sottrae al denaro inserito enteredMoney il totale per calcolare il
 	 * resto
 	 * @param enteredMoney (double)				  - denaro inserito dall'utente
+	 * @throws InvalidAmountException 
 	 * @throws PaymentNotCompletedException 		se il pagamento in contanti non è andato a buon fine (se il denaro inserito
 	 * 												è insufficiente)
 	 */
-	public void makeCashPayment(double enteredMoney) {
+	public void makeCashPayment(double enteredMoney) throws InvalidAmountException {
 		p=new CashPayment(total);
 		try {
 			p.makePayment(enteredMoney);

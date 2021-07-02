@@ -67,8 +67,9 @@ public class TicketMachine {
 	 * Metodo per effettuare il pagamento in contanti della vendita. 
 	 * Questo metodo si limita a richiamare il metodo makeCashPayment della classe Sale.
 	 * @param enteredMoney 	- valore double, indica l'ammontare inserito dall'utente
+	 * @throws InvalidAmountException 
 	 */
-	public void makeCashPayment(double enteredMoney) {
+	public void makeCashPayment(double enteredMoney) throws InvalidAmountException {
 		s.makeCashPayment(enteredMoney);
 	}
 	

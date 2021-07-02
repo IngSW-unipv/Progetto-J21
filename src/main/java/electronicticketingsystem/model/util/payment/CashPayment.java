@@ -1,5 +1,6 @@
 package electronicticketingsystem.model.util.payment;
 
+import electronicticketingsystem.model.util.exceptions.InvalidAmountException;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.sale.Cash;
 
@@ -23,8 +24,9 @@ public class CashPayment implements Payment{
 	 * costruttore inizializza a 0 il resto, imposta l'attributo amount alla cifra inserita
 	 * come parametro e inizializza completed a false.
 	 * @param amount		- valore double che indica il totale da pagare
+	 * @throws InvalidAmountException 
 	 */
-	public CashPayment(double amount) {
+	public CashPayment(double amount) throws InvalidAmountException {
 		this.amount=amount;
 		this.change=new Cash(0.0);
 		this.completed = false;
@@ -34,8 +36,9 @@ public class CashPayment implements Payment{
 	 * Costruttore alternativo della classe, che richiede in ingresso un oggetto della classe
 	 * Cash che rappresenta la quantità di denaro inserita dall'utente.
 	 * @param enteredMoney 	- oggetto della classe Cash che indica il denaro inserito dall'utente
+	 * @throws InvalidAmountException 
 	 */
-	public CashPayment(Cash enteredMoney) {
+	public CashPayment(Cash enteredMoney) throws InvalidAmountException {
 		this.amount=enteredMoney.getAmount(); 
 		this.change=new Cash(0.0);
 	}
@@ -49,10 +52,16 @@ public class CashPayment implements Payment{
 	 * buon fine ed è sollevata un'eccezione.
 	 * @param cash 			- valore double che indica il denaro inserito dall'utente
 	 * @throws PaymentNotCompletedException		se il denaro inserito dall'utente non è sufficiente
+	 * @throws InvalidAmountException 
 	 */
-	public void makePayment(double enteredMoney) throws PaymentNotCompletedException {
+	public void makePayment(double enteredMoney) throws PaymentNotCompletedException{
 		if (enteredMoney >= amount) {
-		change=new Cash(enteredMoney-amount); 
+		try {
+			change=new Cash(enteredMoney-amount);
+		} catch (InvalidAmountException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		completed = true;
 		} else 
 			throw new PaymentNotCompletedException("The cash entered is not enough");
