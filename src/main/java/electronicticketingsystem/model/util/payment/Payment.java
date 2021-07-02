@@ -1,5 +1,6 @@
 package electronicticketingsystem.model.util.payment;
 
+import electronicticketingsystem.model.util.exceptions.InvalidAmountException;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 
 /**
@@ -12,8 +13,9 @@ public interface Payment {
 	 * Metodo che permette di simulare la procedura di pagamento
 	 * @param amount							- richiede in ingresso il valore double che indica il totale da pagare
 	 * @throws PaymentNotCompletedException		  nel caso in cui il pagamento non possa essere marcato come completato
+	 * @throws InvalidAmountException 
 	 */
-	public void makePayment(double amount) throws PaymentNotCompletedException;
+	public void makePayment(double amount) throws PaymentNotCompletedException, InvalidAmountException;
 	
 	/**
 	 * Metodo get per risalire al valore double che indica il totale da pagare

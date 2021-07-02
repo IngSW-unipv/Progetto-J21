@@ -59,7 +59,6 @@ public class CashPayment implements Payment{
 		try {
 			change=new Cash(enteredMoney-amount);
 		} catch (InvalidAmountException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		completed = true;
