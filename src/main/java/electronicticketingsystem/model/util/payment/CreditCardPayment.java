@@ -5,13 +5,11 @@ import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedExcept
 /**
  * Classe che descrive una procedura di pagamento con carta di credito. Questa classe implementa
  * l'interfaccia Payment.
- * Gli attributi di questa classe sono:
- * @param amount				valore double che indica il prezzo totale da pagare
- * @param creditCard 			oggetto della classe CreditCard che indica la carta di credito
- * 								da usare per la procedura di pagamento corrente
- * @param completed				valore booleano che indica se la procedura di pagamento è andata
- * 								a buon fine
- * 
+ * @param amount				- valore double che indica il prezzo totale da pagare
+ * @param creditCard 			- oggetto della classe CreditCard che indica la carta di credito
+ * 								  da usare per la procedura di pagamento corrente
+ * @param completed				- valore booleano che indica se la procedura di pagamento è andata
+ * 								  a buon fine
  *
  */
 public class CreditCardPayment implements Payment {
@@ -23,9 +21,9 @@ public class CreditCardPayment implements Payment {
 	/**
 	 * Costruttore della classe, che richiede in ingresso il totale da pagare e la carta di credito
 	 * da usare e inizializza il valore dell'attributo completed a falso
-	 * @param amountToPay		valore double che indica il prezzo totale da pagare
-	 * @param cardToUse			oggetto della classe CreditCard che indica la carta di credito 
-	 * 							da utilizzare per la procedura di pagamento			
+	 * @param amountToPay		- valore double che indica il prezzo totale da pagare
+	 * @param cardToUse			- oggetto della classe CreditCard che indica la carta di credito 
+	 * 							  da utilizzare per la procedura di pagamento			
 	 */
 	public CreditCardPayment(double amountToPay, CreditCard cardToUse) {
 		this.amount = amountToPay;
@@ -38,8 +36,8 @@ public class CreditCardPayment implements Payment {
 	 * e simula il pagamento considerando che vada a buon fine in tutti i casi in cui la carta non è scaduta e 
 	 * il numero di carta e il cvv sono della lunghezza corretta; se i dati immessi non sono validi, il pagamento
 	 * non va a buon fine ed è lanciata un'eccezione
-	 * @param amount (double)
-	 * @throws PaymentNotCompletedException
+	 * @param amount 			- valore double che indica il totale da pagare
+	 * @throws PaymentNotCompletedException		nel caso in cui i dati della carta non siano validi
 	 */
 	public void makePayment(double amount) throws PaymentNotCompletedException {
 		if ((creditCard.checkExpiration())&&(creditCard.checkCardNumber())&&(creditCard.checkCVV())) {
@@ -52,7 +50,7 @@ public class CreditCardPayment implements Payment {
 	
 	/**
 	 * Metodo get che permette di risalire al totale da pagare
-	 * @return amount (double)
+	 * @return amount 		- valore double che indica il totale da pagare
 	 */
 	public double getAmount() {
 		return amount;
@@ -60,7 +58,7 @@ public class CreditCardPayment implements Payment {
 	
 	/**
 	 * Metodo che permette di sapere se il pagamento è andato a buon fine
-	 * @return completed (boolean)
+	 * @return true			- se il pagamento è andato a buon fine
 	 */
 	public boolean isCompleted() {
 		return completed;

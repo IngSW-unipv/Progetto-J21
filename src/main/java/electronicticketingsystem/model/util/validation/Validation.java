@@ -7,9 +7,9 @@ import electronicticketingsystem.model.util.sale.SaleLineItem;
 import electronicticketingsystem.model.util.sale.SoldRegister;
 
 /**
- * Classe che descrive una convalida. Una convalida è descritta dai seguenti attributi:
- * @param expirationTime		valore di tipo LocalTime che indica l'orario di validità del biglietto
- * @param id					valore di tipo String che indica l'id del biglietto a cui è associata la convalida
+ * Classe che descrive una convalida.
+ * @param expirationTime		- valore di tipo LocalTime che indica l'orario di scadenza del titolo di viaggio
+ * @param id					- valore di tipo String che indica l'id del biglietto a cui è associata la convalida
  *
  */
 public class Validation {
@@ -18,7 +18,9 @@ public class Validation {
 
 	/**
 	 * Costruttore della classe, che crea un oggetto di tipo Validation a partire dall'id del biglietto da convalidare.
-	 * @param id				id del biglietto da convalidare
+	 * @param id				- id del biglietto da convalidare
+	 * @throws TicketNotFoundException	- se l'id inserito non corrisponde a nessuno degli id dei biglietti presenti nel
+	 * 									  SoldRegister
 	 */
 	public Validation(String id) throws TicketNotFoundException {
 		SoldRegister sr=SoldRegister.getInstance();
@@ -34,7 +36,7 @@ public class Validation {
 	 
 	/**
 	 * Metodo get per risalire all'orario di scadenza del biglietto 
-	 * @return expirationTime (LocalTime)
+	 * @return expirationTime 		- oggetto della classe LocalTime che indica l'orario di scadenza
 	 */
 	public LocalTime getExpirationTime() {
 		return this.expirationTime;
@@ -42,7 +44,7 @@ public class Validation {
 	
 	/**
 	 * Metodo get per risalire all'id del biglietto associato alla convalida
-	 * @return id (String)
+	 * @return id 					- stringa che indica l'id del biglietto convalidato
 	 */
 	public String getID() {
 		return this.id;

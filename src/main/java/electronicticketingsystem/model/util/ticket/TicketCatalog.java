@@ -4,10 +4,8 @@ import java.util.*;
 
 /**
  * Classe che descrive il Catalogo contentente i vari titoli di viaggio acquistabili
- * L'attributo
- * @param catalog è una lista di elementi di tipo TravelDocument
+ * @param catalog 	- è una lista di elementi di tipo TravelDocument
  */
-
 public class TicketCatalog {
 
 	private static List<TravelDocument> catalog;
@@ -22,9 +20,8 @@ public class TicketCatalog {
 	
 	/**
 	 * Metodo per ottenere il titolo di viaggio opportuno a seconda del tipo richiesto
-	 * @param type (int)
-	 * @return TravelDocument		il metodo restituisce l'oggetto di tipo TravelDocument che ha come 
-	 * 								tipo il valore specificato
+	 * @param type 				- valore int che indica il tipo di biglietto
+	 * @return TravelDocument	- l'oggetto di tipo TravelDocument che ha come tipo il valore specificato
 	 */
 	public static TravelDocument getSelectedTravelDocument(int type) {
 		int catalogIndex = 0;
