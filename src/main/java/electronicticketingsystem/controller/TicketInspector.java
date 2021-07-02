@@ -10,30 +10,38 @@ import electronicticketingsystem.model.util.validation.ValidationRegister;
 
 
 /**
- * Classe creator di check
+ * Classe che descrive un controllore.
+ * Questa classe è realizzata seguendo il design pattern GRASP Controller: la classe
+ * rappresenta il controller del sistema, che riceve le richieste dell'utente 
+ * limitandosi a delegarle alle classi che contengono i metodi per elaborarle; il sistema
+ * prevede due controller per disaccoppiare la gestione dell'interfaccia testuale dedicata
+ * al cliente da quella dedicata al controllore.
  * 
- * Gli attributi che descrivono questa classe sono:
- * @param idInspector			stringa che identifica l'opertore
- * @param ispections			lista di tutti i check effettuati 
+ * @param idInspector			- stringa che indica l'ID del controllore
+ * @param password				- stringa che indica la password associata al particolare 
+ * 								  controllore per poter accedere alle procedure di controllo
  *  
  */
 
 public class TicketInspector {
 	private String idInspector;
-	private String psw;
+	private String password;
 
 	/**
-	 * Costruttore della classe, che si occupa di inizializzare gli attributi idInspector e inspections
+	 * Costruttore della classe, che si occupa di inizializzare gli attributi idInspector e password
+	 * @param id				- stringa che indica l'ID del controllore
+	 * @param psw				- stringa che indica la password associata a quell'ID
 	 */
 	public TicketInspector(String id,String psw) {
 		this.idInspector=id;
-		this.psw=psw;
+		this.password=psw;
 	}
 	
 	/**
-	 * Questo metodo permette di controllare se un biglietto è in uso.
-	 * @param idTicket 		stringa che identifica il biglietto da controllare 
-	 * @return true se la scadenza della corsa è successiva al tempo attuale
+	 * Metodo che permette di controllare che la convalida di un biglietto sia valida.
+	 * @param idTicket 		- stringa che indica l'ID del biglietto di cui verificare la validità 
+	 * @return true 		- se la scadenza della corsa è successiva al tempo attuale, cioè se il biglietto
+	 * 						  è valido
 	 */
 	public boolean inspection(String TicketID)  {
 		ValidationRegister vr=ValidationRegister.getInstance();
@@ -44,12 +52,20 @@ public class TicketInspector {
 			return ticket.getExpirationTime().isAfter(LocalTime.now());
 	}
 	
+	/**
+	 * Metodo get che permette di ottenere l'ID di un controllore
+	 * @return idInspector	- stringa che indica l'ID del controllore
+	 */
 	public String getIdInspector() {
 		return this.idInspector;
 	}
 	
+	/**
+	 * Metodo get che permette di ottenere la password di un controllore
+	 * @return password	   - stringa che indica la password del controllore
+	 */
 	public String getPassword(){
-		return this.psw;
+		return this.password;
 	}
 	
 }
