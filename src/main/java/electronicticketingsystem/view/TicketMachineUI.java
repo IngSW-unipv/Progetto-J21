@@ -10,14 +10,13 @@ import electronicticketingsystem.model.util.ticket.TicketCatalog;
 import electronicticketingsystem.model.util.exceptions.*;
 
 /**
- * Classe che descrive la view del sistema. La classe gestisce l'interfaccia utente testuale dell'emettitrice, 
- * limitandosi a effettuare alcune stampe e a richiamare gli opportuni metodi del controller TicketMachine quando
- * sono richieste elaborazioni dei dati.
- * Gli attributi sono:
- * @param s				oggetto della classe Scanner usato per ottenere le informazioni inserite su console da 
- * 						parte dell'utente
- * @param choice 		valore intero che rappresenta la scelta del servizio effettuata dall'utente
- * @param tm			oggetto della classe TicketMachine, ovvero della classe che fa da Controller del sistema
+ * Classe che descrive la view del sistema. La classe gestisce l'interfaccia testuale dell'emettitrice dedicata
+ * all'utente, limitandosi a effettuare alcune stampe e a richiamare gli opportuni metodi del controller TicketMachine 
+ * quando sono richieste elaborazioni dei dati.
+ * @param s				- oggetto della classe Scanner usato per ottenere le informazioni inserite su console da 
+ * 						  parte dell'utente
+ * @param choice 		- valore intero che rappresenta la scelta del servizio effettuata dall'utente
+ * @param tm			- oggetto della classe TicketMachine, ovvero della classe che fa da Controller del sistema
  *
  */
 public class TicketMachineUI {
@@ -29,7 +28,7 @@ public class TicketMachineUI {
 	/**
 	 * Costruttore della classe, che richiede in ingresso un oggetto della classe Scanner. Il costruttore inizializza 
 	 * l'attributo choice e crea un oggetto Controller.
-	 * @param s (Scanner)
+	 * @param s 		- oggetto della classe scanner
 	 */
 	public TicketMachineUI(Scanner s) {
 		this.s=s;
@@ -41,10 +40,11 @@ public class TicketMachineUI {
 	 * Metodo che gestisce le operazioni effettuate dall'interfaccia grafica. Il metodo si limita ad effettuare una serie
 	 * di stampe di servizi selezionabili dall'utente e a richiamare i metodi opportuni del controller per permettere
 	 * all'utente di visualizzare a schermo i risultati.
-	 * @param cat		richiede in ingresso un oggetto della classe TicketCatalog perchè l'utente visualizzi i
-	 * 					prodotti acquistabili
-	 * @throws TicketTypeNotExistingException 
-	 * @exception PaymentNotCompletedException
+	 * @param cat		- richiede in ingresso un oggetto della classe TicketCatalog perchè l'utente visualizzi i
+	 * 					  prodotti acquistabili
+	 * @throws TicketTypeNotExistingException		se il tipo inserito dall'utente non corrisponde ad uno degli articoli
+	 * 												acquistabili
+	 * @throws PaymentNotCompletedException			se la procedura di pagamento non è andata a buon fine
 	 */
 	public void start(TicketCatalog cat) throws TicketTypeNotExistingException {
 		

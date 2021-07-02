@@ -3,15 +3,30 @@ package electronicticketingsystem.view;
 import java.util.Scanner;
 
 import electronicticketingsystem.controller.TicketInspector;
-import electronicticketingsystem.controller.TicketMachine;
 
+/**
+ * Classe che descrive la view del sistema. La classe gestisce l'interfaccia testuale dell'emettitrice dedicata
+ * al controllore, limitandosi a effettuare alcune stampe e a richiamare gli opportuni metodi del controller 
+ * TicketMachine quando sono richieste elaborazioni dei dati.
+ * @param s				- oggetto della classe Scanner usato per ottenere le informazioni inserite su console da 
+ * 						  parte del controllore
+ */
 public class TicketInspectorUI {
 	Scanner s;
 	
+	/**
+	 * Costruttore della classe, che richiede in ingresso un oggetto della classe Scanner. 
+	 * @param s 		- oggetto della classe scanner
+	 */
 	public TicketInspectorUI(Scanner s) {
 		this.s=s;
 	}
 	
+	/**
+	 * Metodo che gestisce le operazioni effettuate dall'interfaccia grafica. Il metodo si limita ad effettuare le
+	 * stampe relative al login e all'operazione di controllo e a richiamare i metodi opportuni del controller per 
+	 * permettere l'interazione con il controllore.
+	 */
 	public void start() {
 		System.out.println("Please submit your Ticket Inspector Id: ");
 		String inspectorId = s.next();
