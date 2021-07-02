@@ -1,13 +1,21 @@
 package electronicticketingsystem.model.util.sale;
 
 /**
- * Classe che descrive il resto secondo la quantità di banconote e monete corrispondenti. 
- * Questa classe consente di simulare un pagamento in contanti.
- * Gli attributi di questa classe sono:
- * @param amount								valore double che rappresenta il prezzo da pagare
- * @param b50, b20, b10, b5 					il numero di banconote rispettivamente da 50, 20, 10 e 5 euro
- * @param m2, m1								il numero di monete rispettivamente da 2 e 1 euro
- * @param m050, m020, m010, m005, m002, m001	il numero di monete rispettivamente da 50, 20, 10, 5, 2 e 1 centesimo
+ * Classe che descrive una certa quantità di denaro secondo la quantità di banconote e monete corrispondenti. 
+ * Questa classe è usata per calcolare il resto e consente di simulare un pagamento in contanti.
+ * @param amount		- valore double che rappresenta l'ammontare da dividere in banconote e monete
+ * @param b50			- il numero di banconote da 50 euro
+ * @param b20		    - il numero di banconote da 20 euro
+ * @param b10			- il numero di banconote da 10 euro
+ * @param b5			- il numero di banconote da 5 euro
+ * @param m2			- il numero di monete da 2 euro
+ * @param m1     		- il numero di monete da 1 euro
+ * @param m050			- il numero di monete da 50 centesimi
+ * @param m020			- il numero di monete da 20 centesimi
+ * @param m010			- il numero di monete da 10 centesimi
+ * @param m005			- il numero di monete da 5 centesimi
+ * @param m002			- il numero di monete da 2 centesimi
+ * @param m001			- il numero di monete da 1 centesimo
  */
 public class Cash {
 	private double amount;
@@ -16,25 +24,25 @@ public class Cash {
 	/**
 	 * Costruttore della classe, che richiede in ingresso l'ammontare di cui si vuole 
 	 * calcolare la composizione in monete e banconote
-	 * @param a (double)
+	 * @param a (double)	- ammontare di cui calcolare la composizione
 	 */
 	public Cash(double a) {
 		this.amount=a;
-		b50=(int)(amount / 50);     // numero di banconote da 50 euro
+		b50=(int)(amount / 50);     
 		double change = amount % 50;
-		b20=(int)(change / 20);        // numero di banconote da 20 euro
+		b20=(int)(change / 20);        
 		change=change % 20;
-		b10=(int) (change / 10);       // numero di banconote da 10 euro
+		b10=(int) (change / 10);       
 		change=change % 10;
-	    b5=(int) (change / 5);         // numero di monete da 5 euro
+	    b5=(int) (change / 5);        
 		change=change % 5;
-		m2=(int) (change / 2);         // numero di monete da 2 euro
+		m2=(int) (change / 2);         
 		change=change % 2;
-		m1=(int) (change / 1);		  // numero di monete da 1 euro
+		m1=(int) (change / 1);		  
 		change=change % 1;
-		m050=(int)(change / 0.5);		  //numero di monete da 50 centesimi
+		m050=(int)(change / 0.5);		  
 		change=change % 0.5;
-		m020=(int)(change / 0.2);		 //numero di monete da 20 centesimi
+		m020=(int)(change / 0.2);		 
 		change=change % 0.2;
 		m010=(int)(change / 0.1);
 		change=change % 0.1;
@@ -49,18 +57,18 @@ public class Cash {
 	 * Costruttore alternativo della classe, che richiede in ingresso la quantità di 
 	 * banconote e monete di ogni tipo e inizializza l'attributo amount come somma 
 	 * pesata delle quantità fornite.
-	 * @param b50 (int)
-	 * @param b20 (int)
-	 * @param b10 (int)
-	 * @param b5 (int)
-	 * @param m2 (int)
-	 * @param m1 (int)
-	 * @param m050 (int)
-	 * @param m020 (int)
-	 * @param m010 (int)
-	 * @param m005 (int)
-	 * @param m002 (int)
-	 * @param m001 (int)
+	 * @param b50			- il numero di banconote da 50 euro
+	 * @param b20		    - il numero di banconote da 20 euro
+	 * @param b10			- il numero di banconote da 10 euro
+	 * @param b5			- il numero di banconote da 5 euro
+	 * @param m2			- il numero di monete da 2 euro
+	 * @param m1     		- il numero di monete da 1 euro
+	 * @param m050			- il numero di monete da 50 centesimi
+	 * @param m020			- il numero di monete da 20 centesimi
+	 * @param m010			- il numero di monete da 10 centesimi
+	 * @param m005			- il numero di monete da 5 centesimi
+	 * @param m002			- il numero di monete da 2 centesimi
+	 * @param m001			- il numero di monete da 1 centesimo
 	 */
 	public Cash(int b50, int b20, int b10, int b5, int m2, int m1, int m050, int m020, int m010, int m005, int m002, int m001) {
 		this.b50=b50;
@@ -80,7 +88,7 @@ public class Cash {
 	
 	/**
 	 * Metodo get per ottenere l'ammontare del pagamento
-	 * @return amount (double)
+	 * @return amount		- valore double che indica la quantità di denaro
 	 */
 	public double getAmount() {
 		return this.amount;

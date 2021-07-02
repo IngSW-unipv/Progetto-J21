@@ -10,20 +10,20 @@ public interface Payment {
 	
 	/**
 	 * Metodo che permette di simulare la procedura di pagamento
-	 * @param amount							richiede in ingresso il valore double che indica il totale da pagare
-	 * @throws PaymentNotCompletedException		nel caso in cui il pagamento non possa essere marcato come completato
+	 * @param amount							- richiede in ingresso il valore double che indica il totale da pagare
+	 * @throws PaymentNotCompletedException		  nel caso in cui il pagamento non possa essere marcato come completato
 	 */
 	public void makePayment(double amount) throws PaymentNotCompletedException;
 	
 	/**
 	 * Metodo get per risalire al valore double che indica il totale da pagare
-	 * @return amount (double)
+	 * @return amount 				- valore double che indica il totale da pagare
 	 */
 	public double getAmount();
 	
 	/**
 	 * Metodo che permette di sapere se il pagamento è andato a buon fine
-	 * @return completed (boolean)
+	 * @return true					- se il pagamento è andato a buon fine
 	 */
 	public boolean isCompleted();
 

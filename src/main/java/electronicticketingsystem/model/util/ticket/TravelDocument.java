@@ -1,13 +1,11 @@
 package electronicticketingsystem.model.util.ticket;
 
 /** Classe astratta che descrive un generico Titolo di Viaggio 
- *  Gli attributi di questa classe sono:
- *  @param type				valore intero tra 1 e 3 che indica il tipo di titolo di viaggio
- *  @param description		stringa che descrive lo specifico titolo di viaggio (nome)
- *  @param price			valore double che indica il prezzo del titolo di viaggio
- *  @param timeToAdd		valore long che indica il numero di ore di validità del titolo di viaggio
+ *  @param type				- valore intero tra 1 e 3 che indica il tipo di titolo di viaggio
+ *  @param description		- stringa che descrive lo specifico titolo di viaggio (nome)
+ *  @param price			- valore double che indica il prezzo del titolo di viaggio
+ *  @param timeToAdd		- valore long che indica il numero di ore di validità del titolo di viaggio
  *  */
-
 public abstract class TravelDocument {
 	
 	private int type;
@@ -16,11 +14,11 @@ public abstract class TravelDocument {
 	private long timeToAdd; 
 	
 	/**
-	 * Costruttore della classe, che richiede in ingresso i seguenti argomenti
-	 * @param type
-	 * @param description
-	 * @param price
-	 * @param timeToAdd
+	 * Costruttore della classe, che richiede in ingresso tutti gli attributi della classe
+	 *  @param type				- valore intero tra 1 e 3 che indica il tipo di titolo di viaggio
+	 *  @param description		- stringa che descrive lo specifico titolo di viaggio (nome)
+	 *  @param price			- valore double che indica il prezzo del titolo di viaggio
+	 *  @param timeToAdd		- valore long che indica il numero di ore di validità del titolo di viaggio
 	 */
 	public TravelDocument(int type, String description, double price, long timeToAdd) {
 		this.type = type;
@@ -31,7 +29,7 @@ public abstract class TravelDocument {
 
 	/**
 	 * Metodo get per risalire al tipo del titolo di viaggio
-	 * @return type (int)
+	 * @return type 		- valore int che indica il tipo di titolo di viaggio
 	 */
 	public int getType() {
 		return type;
@@ -39,7 +37,7 @@ public abstract class TravelDocument {
 
 	/**
 	 * Metodo get per risalire alla descrizione del titolo di viaggio
-	 * @return description (String)
+	 * @return description 	- stringa che descrive il titolo di viaggio (nome)
 	 */
 	public String getDescription() {
 		return description;
@@ -47,7 +45,7 @@ public abstract class TravelDocument {
 	
 	/**
 	 * Metodo get per risalire al prezzo del titolo di viaggio
-	 * @return price (double)
+	 * @return price 		- valore double che indica il prezzo del titolo di viaggio
 	 */
 	public double getPrice() {
 		return price;
@@ -55,7 +53,7 @@ public abstract class TravelDocument {
 	
 	/**
 	 * Metodo get per risalire al numero di ore di validità del titolo di viaggio
-	 * @return timeToAdd (long)
+	 * @return timeToAdd 	- valore long che indica il numero di ore di validità del titolo di viaggio
 	 */
 	public long getTimeToAdd() {
 		return timeToAdd;

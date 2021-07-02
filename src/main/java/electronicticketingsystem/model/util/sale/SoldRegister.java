@@ -6,8 +6,6 @@ import java.util.List;
 import electronicticketingsystem.model.util.exceptions.InvalidQuantityException;
 import electronicticketingsystem.model.util.validation.Validation;
 
-
-
 /**
 * Classe che descrive il registro degli articoli venduti.
 * Questa classe è realizzata seguendo il design pattern Singleton della GoF in quanto ogni emettitrice
@@ -20,7 +18,6 @@ import electronicticketingsystem.model.util.validation.Validation;
 public class SoldRegister {
 	private static List<SaleLineItem> payedTickets;
 	private static SoldRegister instance = null;
-	private boolean sold;
 	
 	/**
 	 * Costruttore della classe che definisce il registro come ArrayList
@@ -32,8 +29,8 @@ public class SoldRegister {
 	/**
 	 * Metodo statico previsto dal pattern Singleton. Dovendo esistere un'unica istanza di questa classe,
 	 * il metodo ne crea una e la restituisce nel caso non esista, oppure restituisce quella esistente 
-	 * nel caso in cui ci sia già un'istanza
-	 * @return SoldRegister			restituisce l'unica istanza esistente della classe stessa
+	 * nel caso in cui ci sia già un'istanza.
+	 * @return SoldRegister			- restituisce l'unica istanza esistente della classe stessa
 	 */
 	public static SoldRegister getInstance() {
 		if (instance == null) {
@@ -43,8 +40,8 @@ public class SoldRegister {
 	}
 	
 	/**
-	 * Metodo che aggiunge una certo articolo della vendita al registro
-	 * @param ticket				richiede in ingresso l'oggetto della classe SaleLineItem da aggiungere
+	 * Metodo che aggiunge un certo articolo della vendita al registro
+	 * @param ticket				- l'oggetto della classe SaleLineItem da aggiungere
 	 */
 	public void addToRegister(SaleLineItem ticket) {
 		payedTickets.add(ticket);
@@ -53,8 +50,9 @@ public class SoldRegister {
 	/**
 	 * Metodo che permette di risalire all'articolo a partire dal suo ID. Il metodo consulta il registro e,
 	 * se esiste, restituisce l'oggetto della classe SaleLineItem che ha come ID quello posto in ingresso.
-	 * @param id					id dell'articolo da ricercare
-	 * @return SaleLineItem
+	 * @param id					- id dell'articolo da ricercare
+	 * @return SaleLineItem         - oggetto di tipo SaleLineItem con l'ID richiesto (o null se non è stata
+	 * 								  trovata corrispondenza)
 	 */
 	public SaleLineItem returnTicket(String id) {
 		for(SaleLineItem i: payedTickets) {

@@ -7,7 +7,7 @@ import java.util.List;
  * Classe che descrive il registro delle convalide.
  * Questa classe è realizzata seguendo il design pattern Singleton della GoF in quanto ogni emettitrice
  * deve possedere un'unica istanza del registro che contiene tutti i biglietti convalidati.
- * @param stampedTickets		è una lista di oggetti di tipo Validation
+ * @param stampedTickets		- è una lista di oggetti di tipo Validation
  * 
  */
 public class ValidationRegister {
@@ -25,7 +25,7 @@ public class ValidationRegister {
 	 * Metodo statico previsto dal pattern Singleton. Dovendo esistere un'unica istanza di questa classe,
 	 * il metodo ne crea una e la restituisce nel caso non esista, oppure restituisce quella esistente 
 	 * nel caso in cui ci sia già un'istanza
-	 * @return ValidationRegister		restituisce l'unica istanza esistente della classe stessa
+	 * @return ValidationRegister		- l'unica istanza esistente della classe stessa
 	 */
 	public static ValidationRegister getInstance() {
 		if (instance == null) {
@@ -37,7 +37,7 @@ public class ValidationRegister {
 	
 	/**
 	 * Metodo che aggiunge una certa convalida al registro
-	 * @param v							richiede in ingresso l'oggetto della classe Validation da aggiungere
+	 * @param v							- l'oggetto della classe Validation da aggiungere
 	 */
 	public void addToRegister(Validation v) {
 		stampedTickets.add(v); //aggiungi alla lista tutte le convalide	
@@ -45,8 +45,9 @@ public class ValidationRegister {
 	
 	/**
 	 * Metodo che restituisce la convalida corrispondente all'id in ingresso
-	 * @param id						l'ID del biglietto del quale si vuole ottenere la convalida
-	 * @return Validation				restituisce un oggetto di tipo Validation corrispondente all'id inserito
+	 * @param id						- l'ID del biglietto del quale si vuole ottenere la convalida
+	 * @return Validation				- un oggetto di tipo Validation corrispondente all'id inserito, o
+	 * 									  null se non è stata trovata alcuna corrispondenza
 	 */
 	public Validation findValidation(String id) {
 		for(Validation i: stampedTickets) {
