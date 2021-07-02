@@ -1,4 +1,4 @@
-package electronicticketingsystem.model.util.sale;
+package electronicticketingsystem.model.TestJunit;
 
 import static org.junit.Assert.*;
 
@@ -9,6 +9,8 @@ import electronicticketingsystem.model.util.exceptions.InvalidQuantityException;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
 import electronicticketingsystem.model.util.payment.CashPayment;
+import electronicticketingsystem.model.util.sale.Cash;
+import electronicticketingsystem.model.util.sale.Sale;
 import electronicticketingsystem.model.util.ticket.SingleRideTicket;
 
 /**

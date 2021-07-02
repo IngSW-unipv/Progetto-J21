@@ -1,4 +1,4 @@
-package electronicticketingsystem.test;
+package electronicticketingsystem.model.testerMain;
 
 import electronicticketingsystem.model.server.ApplicationServer;
 import electronicticketingsystem.model.server.WelcomeServlet;

@@ -1,4 +1,4 @@
-package electronicticketingsystem.test;
+package electronicticketingsystem.model.testerMain;
 
 import java.util.Scanner;
 
