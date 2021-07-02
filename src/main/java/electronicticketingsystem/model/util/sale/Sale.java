@@ -101,7 +101,7 @@ public class Sale {
 	 * dovuto e si invoca il metodo della classe che sottrae al denaro inserito enteredMoney il totale per calcolare il
 	 * resto
 	 * @param enteredMoney (double)				  - denaro inserito dall'utente
-	 * @throws InvalidAmountException 
+	 * @throws InvalidAmountException 				se il totale da pagare è un valore minore di 0.0
 	 * @throws PaymentNotCompletedException 		se il pagamento in contanti non è andato a buon fine (se il denaro inserito
 	 * 												è insufficiente)
 	 */
@@ -119,7 +119,7 @@ public class Sale {
 	 * con il totale dovuto e la carta di credito da usare per la vendita e si invoca il metodo della classe che simula il 
 	 * pagamento
 	 * @param cc (CreditCard)					  - carta di credito da usare per il pagamento
-	 * @throws InvalidAmountException 
+	 * @throws InvalidAmountException 				se il totale da pagare è un valore minore di 0.0
 	 * @throws PaymentNotCompletedException 		se il pagamento con carta di credito non può andare a buon fine (se i dati
 	 * 											    della carta di credito non sono validi)
 	 */

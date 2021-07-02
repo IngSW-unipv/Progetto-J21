@@ -27,7 +27,7 @@ public class Cash {
 	 * Costruttore della classe, che richiede in ingresso l'ammontare di cui si vuole 
 	 * calcolare la composizione in monete e banconote
 	 * @param a (double)	- ammontare di cui calcolare la composizione
-	 * @throws InvalidAmountException 
+	 * @throws InvalidAmountException 	se l'ammontare di cui calcolare la composizione è invalido (minore di 0)
 	 */
 	public Cash(double a) throws InvalidAmountException {
 		if(a<0) throw new InvalidAmountException();
@@ -73,7 +73,7 @@ public class Cash {
 	 * @param m005			- il numero di monete da 5 centesimi
 	 * @param m002			- il numero di monete da 2 centesimi
 	 * @param m001			- il numero di monete da 1 centesimo
-	 * @throws InvalidAmountException 
+	 * @throws InvalidAmountException	se almeno una delle classi di banconote o monete ha una quantità negativa
 	 */
 	public Cash(int b50, int b20, int b10, int b5, int m2, int m1, int m050, int m020, int m010, int m005, int m002, int m001) throws InvalidAmountException {
 		if(b50<0 || b20<0 || b10<0 || b5<0 || m2<0 || m1<0 || m050<0 || m020<0 || m010<0 || m005<0 || m002<0 || m001<0) throw new InvalidAmountException();

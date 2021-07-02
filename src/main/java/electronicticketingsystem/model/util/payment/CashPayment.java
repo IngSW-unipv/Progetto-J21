@@ -24,7 +24,7 @@ public class CashPayment implements Payment{
 	 * costruttore inizializza a 0 il resto, imposta l'attributo amount alla cifra inserita
 	 * come parametro e inizializza completed a false.
 	 * @param amount		- valore double che indica il totale da pagare
-	 * @throws InvalidAmountException 
+	 * @throws InvalidAmountException	se il totale da pagare è minore di 0.0 
 	 */
 	public CashPayment(double amount) throws InvalidAmountException {
 		this.amount=amount;
@@ -36,7 +36,7 @@ public class CashPayment implements Payment{
 	 * Costruttore alternativo della classe, che richiede in ingresso un oggetto della classe
 	 * Cash che rappresenta la quantità di denaro inserita dall'utente.
 	 * @param enteredMoney 	- oggetto della classe Cash che indica il denaro inserito dall'utente
-	 * @throws InvalidAmountException 
+	 * @throws InvalidAmountException	se il totale da pagare è minore di 0.0
 	 */
 	public CashPayment(Cash enteredMoney) throws InvalidAmountException {
 		this.amount=enteredMoney.getAmount(); 
@@ -52,7 +52,8 @@ public class CashPayment implements Payment{
 	 * buon fine ed è sollevata un'eccezione.
 	 * @param cash 			- valore double che indica il denaro inserito dall'utente
 	 * @throws PaymentNotCompletedException		se il denaro inserito dall'utente non è sufficiente
-	 * @throws InvalidAmountException 
+	 * @throws InvalidAmountException 			se la differenza tra il denaro inserito e il totale da pagare 
+	 * 											è minore di 0.0
 	 */
 	public void makePayment(double enteredMoney) throws PaymentNotCompletedException{
 		if (enteredMoney >= amount) {
