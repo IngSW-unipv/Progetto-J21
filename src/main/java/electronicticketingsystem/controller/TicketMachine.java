@@ -77,8 +77,9 @@ public class TicketMachine {
 	 * Metodo per effettuare il pagamento con carta di credito della vendita. 
 	 * Questo metodo si limita a richiamare il metodo makeCreditCardPayment della classe Sale.
 	 * @param cc (CreditCard)	- richiede in ingresso la carta di credito da usare 
+	 * @throws InvalidAmountException 
 	 */
-	public void makeCreditCardPayment(CreditCard cc) {
+	public void makeCreditCardPayment(CreditCard cc) throws InvalidAmountException {
 		s.makeCreditCardPayment(cc); 
 	}
 	

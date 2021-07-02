@@ -119,10 +119,11 @@ public class Sale {
 	 * con il totale dovuto e la carta di credito da usare per la vendita e si invoca il metodo della classe che simula il 
 	 * pagamento
 	 * @param cc (CreditCard)					  - carta di credito da usare per il pagamento
+	 * @throws InvalidAmountException 
 	 * @throws PaymentNotCompletedException 		se il pagamento con carta di credito non può andare a buon fine (se i dati
 	 * 											    della carta di credito non sono validi)
 	 */
-	public void makeCreditCardPayment(CreditCard cc) {
+	public void makeCreditCardPayment(CreditCard cc) throws InvalidAmountException {
 		p=new CreditCardPayment(total,cc);
 		try {
 			p.makePayment(total);
