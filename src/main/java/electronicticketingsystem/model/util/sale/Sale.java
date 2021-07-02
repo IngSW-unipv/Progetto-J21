@@ -51,15 +51,15 @@ public class Sale {
 	 * @throws InvalidQuantityException 		se la quantità scelta non è valida (minore o uguale a 0)
 	 */
 	public void enterItem(int type,int qty) throws TicketTypeNotExistingException, InvalidQuantityException {
-		if(type>TYPE_ACCEPTED) {
+		if(type>TYPE_ACCEPTED || type<=0) {
 			throw new TicketTypeNotExistingException();  
 		} else if (qty <= 0) {
 			throw new InvalidQuantityException();
 		} else {
 			for(int i=0;i<qty;i++) {
-				SaleLineItem sli=new SaleLineItem(type);
-				items.add(sli);
-				this.total+=sli.getSubTotal();
+				SaleLineItem ticket=new SaleLineItem(type);
+				items.add(ticket);
+				this.total+=ticket.getSubTotal();
 			}	 
 		}
 	}
@@ -108,7 +108,6 @@ public class Sale {
 		p=new CashPayment(total);
 		try {
 			p.makePayment(enteredMoney);
-			//p sarà poi usato per salvare i relativi dati
 		} catch (PaymentNotCompletedException e) {
 			e.printStackTrace();
 		}
