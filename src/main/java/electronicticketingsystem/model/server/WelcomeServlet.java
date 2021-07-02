@@ -1,7 +1,6 @@
 package electronicticketingsystem.model.server;
 
 import java.io.*;
-import java.time.LocalTime;
 import java.time.YearMonth;
 import java.util.*;
 
@@ -141,7 +140,7 @@ public class WelcomeServlet extends HttpServlet{
 	}
 	
 	protected void validationFailed(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
-		resp.getWriter().write(Rythm.render("<h1>ID not valid</h1>"));
+		resp.getWriter().write(Rythm.render("validation_failed.html"));
 	}
 
 	
