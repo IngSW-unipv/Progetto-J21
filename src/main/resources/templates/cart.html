@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Meta tags -->
+<!-- Meta tags, link agli stylesheet e nome della scheda -->
 <title>Your shopping cart</title>
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,12 +16,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<!-- Definizione del font da usare per le scritte -->
 <style>
 		body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 </style>
 </head>
 <body>
-<!-- Side Navigation -->
+<!-- Sidebar/menu di navigazione -->
 <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none" id="mySidebar">
   <h1 class="w3-xxxlarge w3-text-theme">Menu</h1>
   <button class="w3-bar-item w3-button" onclick="w3_close()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Close</button>
@@ -29,6 +30,7 @@
   <a href="/purchase" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
   <a href="https://github.com/IngSW-unipv/Progetto-J21" class="w3-bar-item w3-button"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Contact Us</a>
 </nav>
+
 <!-- Header -->
 <header class="w3-container w3-theme w3-padding" id="myHeader">
   <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i> 
@@ -39,6 +41,8 @@
   </div>
 </header>
   
+  <!-- Porzione della pagina dedicata alla visualizzazione del carrello. Il carrello stampa l'ID, la quantità e il prezzo
+  dei titoli di viaggio selezionati fino a quel momento e permette di svuotare l'intero carrello o aggiungere altri articoli -->
   <div class="w3-container w3-padding w3-half">
       <h2>Shopping Cart</h2>
       <table class="w3-table-all w3-centered w3-card-2 w3-white">
@@ -47,7 +51,6 @@
 	        <th>Ticket ID</th>
 	        <th>Quantity</th>
 	        <th class="w3-center">Price</th>
-	        <!-- <th><a href="/purchase" class="w3-btn w3-grey w3-text-white">+ Add another item</a></th> -->
 	      </tr>
 	  </thead>
 	  <tbody>
@@ -61,12 +64,15 @@
 		}
 		</tbody>
     </table>
+    <!-- Testo per visualizzare il prezzo totale attuale degli articoli selezionati -->
     <h4><b>Total: <span class="w3-text-red">@total &euro;</span></b></h4>
     <a href="/purchase" class="w3-theme w3-button"><span class="fa fa-plus"></span>&nbsp;&nbsp;Add another item</a>
     &nbsp;&nbsp;
     <a href="/remove" class="w3-theme w3-button"><span class="fa fa-times"></span>&nbsp;&nbsp;Remove all items</a>
    </div>
-   
+  
+  <!-- Porzione della pagina dedicata al pagamento con carte di credito. Le informazioni richieste relative alla carta 
+  di credito sono usate per simulare la procedura di pagamento -->
   <div class="w3-container w3-padding w3-half">
       <h2>Payment</h2>
       <div class="w3-card-2 w3-white w3-padding">
@@ -90,12 +96,13 @@
             <input type="submit" value="Continue to checkout" class="w3-btn w3-red">
       </form>
    </div>
- <!-- Footer -->
+   
+<!-- Footer che riporta l'autore della pagina -->
 <footer class="w3-white w3-container w3-padding">
   <p class="w3-center" style="margin-top:75px">Powered by <a href="https://github.com/IngSW-unipv/Progetto-J21" title="Gruppo-J21" target="_blank" class="w3-hover-opacity">Gruppo-J21</a></p>
 </footer>
 <script>
-// Side navigation
+// Script per il funzionamento del menu
 function w3_open() {
   var x = document.getElementById("mySidebar");
   x.style.width = "100%";
