@@ -59,9 +59,9 @@ public class WelcomeServlet extends HttpServlet{
 		} catch (TicketNotFoundException e) {
 			validationFailed(req,resp);
 		} catch (NotEnoughAccessesException e) {
-			e.printStackTrace();
+			validationRepeated(req,resp);
 		} catch (TicketTypeNotExistingException e) {
-			e.printStackTrace();
+			invalidType(req,resp);
 		}
 		
 	}
@@ -84,7 +84,7 @@ public class WelcomeServlet extends HttpServlet{
 		} catch (TicketNotFoundException e) {
 			validationFailed(req,resp);
 		} catch (NotEnoughAccessesException e) {
-			e.printStackTrace();
+			validationRepeated(req,resp);
 		} catch (TicketTypeNotExistingException e) {
 			e.printStackTrace();
 		}
@@ -223,6 +223,10 @@ public class WelcomeServlet extends HttpServlet{
 		return total;
 	}
 	
+	protected void invalidType(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
+		resp.getWriter().write(Rythm.render("type_error.html"));
+	}
+	
 	/**
 	 * Metodo che stampa la pagina di pagamento non andato a buon fine
 	 * @param req	- HttpServletRequest che riporta le informazioni relative alle richieste
@@ -273,6 +277,10 @@ public class WelcomeServlet extends HttpServlet{
 	 */
 	protected void validationFailed(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
 		resp.getWriter().write(Rythm.render("validation_failed.html"));
+	}
+	
+	protected void validationRepeated(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
+		resp.getWriter().write(Rythm.render("validation_repeated.html"));
 	}
 
 	
