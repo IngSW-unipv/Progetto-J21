@@ -2,6 +2,7 @@ package electronicticketingsystem.model.util.sale;
 
 import electronicticketingsystem.model.util.ticket.TicketCatalog;
 import electronicticketingsystem.model.util.ticket.TravelDocument;
+import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
 import electronicticketingsystem.model.util.ticket.*;
 
 
@@ -29,13 +30,19 @@ public class SaleLineItem {
 	 * @param type 			- valore int che indica il tipo di biglietto 
 	 */
 	public SaleLineItem(int type) {
-		TravelDocument ticket=TicketCatalog.getSelectedTravelDocument(type);
-		this.price=ticket.getPrice();
-		this.time=ticket.getTimeToAdd();
-		this.ticketID = generateTicketID(ticket);
+		TravelDocument ticket;
+		try {
+			ticket = TicketCatalog.getInstance().getSelectedTravelDocument(type);
+			this.price=ticket.getPrice();
+			this.time=ticket.getTimeToAdd();
+			this.ticketID = generateTicketID(ticket);
+			
+			if(type==2) this.accesses=((Carnet) ticket).getAccessesNumber();
+			else this.accesses=1;	
+		} catch (TicketTypeNotExistingException e) {
+			e.printStackTrace();
+		}
 		
-		if(type==2) this.accesses=((Carnet) ticket).getAccessesNumber();
-		else this.accesses=1;	
 	}
 	
 	/**

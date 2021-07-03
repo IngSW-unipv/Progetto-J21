@@ -2,6 +2,10 @@ package electronicticketingsystem.model.util.ticket;
 
 import java.util.*;
 
+import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
+import electronicticketingsystem.model.util.sale.SaleLineItem;
+import electronicticketingsystem.model.util.sale.SoldRegister;
+
 /**
  * Classe che descrive il Catalogo contentente i vari titoli di viaggio acquistabili
  * @param catalog 	- è una lista di elementi di tipo TravelDocument
@@ -9,13 +13,21 @@ import java.util.*;
 public class TicketCatalog {
 
 	private static List<TravelDocument> catalog;
+	private static TicketCatalog instance = null;
 	
 	/**
 	 * Costruttore che definisce il catalogo come ArrayList e lo riempie con l'apposito metodo
 	 */
-	public TicketCatalog() {
-		catalog = new ArrayList<>();
+	private TicketCatalog() {
+		TicketCatalog.catalog = new ArrayList<>();
 		loadTravelDocuments();
+	}
+	
+	public static TicketCatalog getInstance() {
+		if (instance == null) {
+			instance = new TicketCatalog();
+		}
+		return instance;
 	}
 	
 	/**
@@ -23,14 +35,11 @@ public class TicketCatalog {
 	 * @param type 				- valore int che indica il tipo di biglietto
 	 * @return TravelDocument	- l'oggetto di tipo TravelDocument che ha come tipo il valore specificato
 	 */
-	public static TravelDocument getSelectedTravelDocument(int type) {
-		int catalogIndex = 0;
-		for (TravelDocument tickets : catalog) {
-			if (tickets.getType() == type) {
-				catalogIndex = catalog.indexOf(tickets);
-			}
-		}
-		return catalog.get(catalogIndex);
+	public TravelDocument getSelectedTravelDocument(int type) throws TicketTypeNotExistingException {
+		for(TravelDocument ticket: catalog) {
+			if(ticket.getType() == type) 
+				return ticket;
+		} throw new TicketTypeNotExistingException(); //se non viene trovato alcun elemento corrispondente ritorna null
 	}
 	
 	/**

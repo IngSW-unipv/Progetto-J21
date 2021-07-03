@@ -14,6 +14,7 @@ import org.rythmengine.Rythm;
 import electronicticketingsystem.model.util.exceptions.NotEnoughAccessesException;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.exceptions.TicketNotFoundException;
+import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
 import electronicticketingsystem.model.util.payment.*;
 import electronicticketingsystem.model.util.sale.SaleLineItem;
 import electronicticketingsystem.model.util.sale.SoldRegister;
@@ -35,7 +36,7 @@ import electronicticketingsystem.model.util.validation.ValidationRegister;
 @SuppressWarnings("serial")
 public class WelcomeServlet extends HttpServlet{
 	
-	TicketCatalog catalog = new TicketCatalog();
+	TicketCatalog catalog = TicketCatalog.getInstance();
 	ArrayList<SaleLineItem> items=new ArrayList<>();
 	SoldRegister sr = SoldRegister.getInstance();
 	Validation v;
@@ -58,7 +59,8 @@ public class WelcomeServlet extends HttpServlet{
 		} catch (TicketNotFoundException e) {
 			validationFailed(req,resp);
 		} catch (NotEnoughAccessesException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TicketTypeNotExistingException e) {
 			e.printStackTrace();
 		}
 		
@@ -82,7 +84,8 @@ public class WelcomeServlet extends HttpServlet{
 		} catch (TicketNotFoundException e) {
 			validationFailed(req,resp);
 		} catch (NotEnoughAccessesException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TicketTypeNotExistingException e) {
 			e.printStackTrace();
 		}
 		
@@ -97,8 +100,9 @@ public class WelcomeServlet extends HttpServlet{
 	 * @throws PaymentNotCompletedException		nel caso in cui una procedura di pagamento non sia andata a buon fine
 	 * @throws TicketNotFoundException			nel caso in cui l'ID richiesto non corrisponda a nessun biglietto venduto
 	 * @throws NotEnoughAccessesException 
+	 * @throws TicketTypeNotExistingException 
 	 */
-	protected void requests(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException, PaymentNotCompletedException, TicketNotFoundException, NotEnoughAccessesException {
+	protected void requests(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException, PaymentNotCompletedException, TicketNotFoundException, NotEnoughAccessesException, TicketTypeNotExistingException {
 		if(req.getPathInfo().equals("/")) {
 			home(req,resp);}
 		if(req.getPathInfo().equals("/purchase") )
@@ -152,12 +156,13 @@ public class WelcomeServlet extends HttpServlet{
 	 * @param resp	- HttpServletResponse che riporta le informazioni relative alle risposte da inviare
 	 * @throws ServletException		se la servlet ha incontrato problemi
 	 * @throws IOException			se si è verificato un problema nell'I/O
+	 * @throws TicketTypeNotExistingException 
 	 */
-	protected void cart(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException {
+	protected void cart(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException, TicketTypeNotExistingException {
 		int type = Integer.parseInt(req.getParameter("type"));
 		int qty = Integer.parseInt(req.getParameter("qty"));
 		for(int i=0;i<qty;i++) {
-			TravelDocument ticket=TicketCatalog.getSelectedTravelDocument(type);
+			TravelDocument ticket=TicketCatalog.getInstance().getSelectedTravelDocument(type);
 			SaleLineItem it=new SaleLineItem(ticket);
 			items.add(it);
 		}

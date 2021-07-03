@@ -24,7 +24,7 @@ public class TicketTester {
 	public static void main(String[] args) throws TicketTypeNotExistingException, NotEnoughAccessesException {
 
 		Scanner s=new Scanner(System.in);
-		TicketCatalog catalog = new TicketCatalog();
+		TicketCatalog catalog = TicketCatalog.getInstance();
 		
 		TicketMachineUI uiM=new TicketMachineUI(s);
 		TicketInspectorUI uiI=new TicketInspectorUI(s);
