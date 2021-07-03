@@ -25,7 +25,8 @@ import electronicticketingsystem.model.util.validation.ValidationRegister;
 /**
  * Classe che descrive la servlet per la gestione della web application. Questa classe estende la superclasse
  * HttpServlet, della quale fa l'override dei metodi principali doGet() e doPost()
- * @param catalog		- oggetto della classe TicketCatalog
+ * @param catalog		- istanza (unica) della classe TicketCatalog che raccoglie tutti gli articoli acquistabili
+ * 						  dal sistema
  * @param items			- array list di SaleLineItem che rappresenta l'insieme di articoli relativi a una 
  * 						  procedura di acquisto
  * @param sr			- istanza (unica) della classe SoldRegister che raccoglie tutti i biglietti venduti dal
@@ -99,8 +100,9 @@ public class WelcomeServlet extends HttpServlet{
 	 * @throws IOException			se si è verificato un problema nell'I/O
 	 * @throws PaymentNotCompletedException		nel caso in cui una procedura di pagamento non sia andata a buon fine
 	 * @throws TicketNotFoundException			nel caso in cui l'ID richiesto non corrisponda a nessun biglietto venduto
-	 * @throws NotEnoughAccessesException 
-	 * @throws TicketTypeNotExistingException 
+	 * @throws NotEnoughAccessesException 		nel caso in cui il titolo di viaggio selezionato non possa più essere
+	 * 											convalidato perchè ha esaurito gli accessi consentiti
+	 * @throws TicketTypeNotExistingException	nel caso in cui il tipo selezionato sia inesistente
 	 */
 	protected void requests(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException, PaymentNotCompletedException, TicketNotFoundException, NotEnoughAccessesException, TicketTypeNotExistingException {
 		if(req.getPathInfo().equals("/")) {
@@ -223,6 +225,13 @@ public class WelcomeServlet extends HttpServlet{
 		return total;
 	}
 	
+	/**
+	 * Metodo che stampa la pagina di errore relativa a un tipo di biglietto non valido 
+	 * @param req	- HttpServletRequest che riporta le informazioni relative alle richieste
+	 * @param resp	- HttpServletResponse che riporta le informazioni relative alle risposte da inviare
+	 * @throws ServletException		se la servlet ha incontrato problemi
+	 * @throws IOException			se si è verificato un problema nell'I/O
+	 */
 	protected void invalidType(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
 		resp.getWriter().write(Rythm.render("type_error.html"));
 	}
@@ -279,6 +288,14 @@ public class WelcomeServlet extends HttpServlet{
 		resp.getWriter().write(Rythm.render("validation_failed.html"));
 	}
 	
+	/**
+	 * Metodo che stampa la pagina di convalida ripetuta o di tentativo di convalida di un biglietto che ha esaurito gli
+	 * accessi a propria disposizione
+	 * @param req	- HttpServletRequest che riporta le informazioni relative alle richieste
+	 * @param resp	- HttpServletResponse che riporta le informazioni relative alle risposte da inviare
+	 * @throws ServletException		se la servlet ha incontrato problemi
+	 * @throws IOException			se si è verificato un problema nell'I/O
+	 */
 	protected void validationRepeated(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
 		resp.getWriter().write(Rythm.render("validation_repeated.html"));
 	}

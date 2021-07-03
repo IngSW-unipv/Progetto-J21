@@ -17,6 +17,7 @@ public class CreditCard {
 	public static final int CARD_NUMBER_LENGTH = 16;
 	public static final int CVV_LENGTH = 3;
 	
+	@SuppressWarnings("unused")
 	private String nameOnCard;
 	private String cardNumber;
 	private YearMonth expirationDate;

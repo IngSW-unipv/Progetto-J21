@@ -1,7 +1,5 @@
 package electronicticketingsystem.controller;
 
-import java.util.*;
-
 import electronicticketingsystem.model.util.exceptions.InvalidAmountException;
 import electronicticketingsystem.model.util.exceptions.InvalidQuantityException;
 import electronicticketingsystem.model.util.exceptions.NotEnoughAccessesException;
@@ -112,7 +110,8 @@ public class TicketMachine {
 	 * a video una lista degli ID dei biglietti convalidati.
 	 * @param ticketID (String)		- ID del biglietto da convalidare
 	 * @throws TicketNotFoundException	nel caso in cui l'ID inserito non sia valido
-	 * @throws NotEnoughAccessesException 
+	 * @throws NotEnoughAccessesException	nel caso in cui il numero di accessi associato al biglietto sia
+	 * 										uguale a 0, rendendolo non più validabile
 	 */
 	public void validation(String ticketID) throws TicketNotFoundException, NotEnoughAccessesException {
 		vr = ValidationRegister.getInstance();

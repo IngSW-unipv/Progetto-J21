@@ -28,6 +28,8 @@ public class SaleLineItem {
 	 * con i valori corrispondenti al tipo selezionato. L'ID del biglietto è impostato 
 	 * tramite un apposito metodo di generazione degli id.
 	 * @param type 			- valore int che indica il tipo di biglietto 
+	 * @throws TicketTypeNotExisting	se si tenta di creare un SaleLineItem con un 
+	 * 									tipo non previsto dal sistema
 	 */
 	public SaleLineItem(int type) {
 		TravelDocument ticket;
@@ -109,8 +111,7 @@ public class SaleLineItem {
 	
 	/**
 	 * Metodo che decrementa di 1 il numero di accessi consentiti (ad ogni convalida, il 
-	 * numero di accessi rimanenti va decrementato di 1). Questo metodo ha senso solo per
-	 * titoli di viaggio di tipo 2 (Carnet)
+	 * numero di accessi rimanenti va decrementato di 1)
 	 */
 	public void setOneAccessLess() {
 		this.accesses-=1;

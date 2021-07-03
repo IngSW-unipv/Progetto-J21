@@ -3,16 +3,13 @@ package electronicticketingsystem.model.util.sale;
 import java.util.ArrayList;
 import java.util.List;
 
-import electronicticketingsystem.model.util.exceptions.InvalidQuantityException;
-import electronicticketingsystem.model.util.validation.Validation;
-
 /**
 * Classe che descrive il registro degli articoli venduti.
 * Questa classe è realizzata seguendo il design pattern Singleton della GoF in quanto ogni emettitrice
 * deve possedere un'unica istanza del registro che contiene tutti i biglietti venduti. Questa classe
 * è necessaria per memorizzare in modo persistente gli articoli che compongono una vendita una volta che
 * è stata completata, ovvero nel momento in cui è stato effettuato il pagamento.
-* @param payedTickets				è una lista di oggetti di tipo SaleLineItem
+* @param payedTickets				- è una lista di oggetti di tipo SaleLineItem
 * 
 */
 public class SoldRegister {

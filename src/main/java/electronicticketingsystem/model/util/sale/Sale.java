@@ -24,6 +24,7 @@ import electronicticketingsystem.model.util.payment.Payment;
  * 							      completate, ovvero delle quali è stato ricevuto il pagamento
  * 
  */
+@SuppressWarnings("unused")
 public class Sale {
 	private final int TYPE_ACCEPTED=3;
 	private boolean completed;
@@ -47,7 +48,7 @@ public class Sale {
 	 * @param type				- valore int, indica il tipo di biglietto selezionato
 	 * @param qty				- valore int, indica la quantità di biglietti di quel tipo
 	 * @throws TicketTypeNotExistingException	se il tipo di biglietto scelto non è un valore previsto dal sistema
-	 * 											(maggiore di 3)
+	 * 											(maggiore di 3 o minore uguale a 0)
 	 * @throws InvalidQuantityException 		se la quantità scelta non è valida (minore o uguale a 0)
 	 */
 	public void enterItem(int type,int qty) throws TicketTypeNotExistingException, InvalidQuantityException {

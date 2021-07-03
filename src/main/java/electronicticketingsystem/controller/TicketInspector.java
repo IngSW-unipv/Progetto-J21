@@ -1,10 +1,6 @@
 package electronicticketingsystem.controller;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import electronicticketingsystem.model.util.ticket.TravelDocument;
 import electronicticketingsystem.model.util.validation.Validation;
 import electronicticketingsystem.model.util.validation.ValidationRegister;
 

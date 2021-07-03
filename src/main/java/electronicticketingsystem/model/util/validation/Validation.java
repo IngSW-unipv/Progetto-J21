@@ -20,9 +20,10 @@ public class Validation {
 	/**
 	 * Costruttore della classe, che crea un oggetto di tipo Validation a partire dall'id del biglietto da convalidare.
 	 * @param id				- id del biglietto da convalidare
-	 * @throws TicketNotFoundException	- se l'id inserito non corrisponde a nessuno degli id dei biglietti presenti nel
+	 * @throws TicketNotFoundException	  se l'id inserito non corrisponde a nessuno degli id dei biglietti presenti nel
 	 * 									  SoldRegister
-	 * @throws NotEnoughAccessesException 
+	 * @throws NotEnoughAccessesException se il titolo di viaggio ha esaurito gli accessi consentiti e dunque non può più
+	 * 									  essere convalidato
 	 */
 	public Validation(String id) throws TicketNotFoundException, NotEnoughAccessesException {
 		SoldRegister sr=SoldRegister.getInstance();

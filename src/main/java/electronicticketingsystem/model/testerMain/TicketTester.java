@@ -19,7 +19,8 @@ public class TicketTester {
 	 * di selezionare la modalità di utilizzo (controllore o viaggiatore)
 	 * @param args			- parametri in ingresso al metodo main (non utilizzati)
 	 * @throws TicketTypeNotExistingException  se il tipo di biglietto selezionato non è previsto dal catalogo
-	 * @throws NotEnoughAccessesException 
+	 * @throws NotEnoughAccessesException 	   se il titolo di viaggio non può più essere convalidato perchè ha
+	 * 										   esaurito gli accessi associati
 	 */
 	public static void main(String[] args) throws TicketTypeNotExistingException, NotEnoughAccessesException {
 

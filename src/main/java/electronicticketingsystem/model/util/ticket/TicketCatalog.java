@@ -3,13 +3,14 @@ package electronicticketingsystem.model.util.ticket;
 import java.util.*;
 
 import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
-import electronicticketingsystem.model.util.sale.SaleLineItem;
-import electronicticketingsystem.model.util.sale.SoldRegister;
 
 /**
- * Classe che descrive il Catalogo contentente i vari titoli di viaggio acquistabili
- * @param catalog 	- è una lista di elementi di tipo TravelDocument
- */
+* Classe che descrive il catalogo dei titoli di viaggio che si possono acquistare dal sistema.
+* Questa classe è realizzata seguendo il design pattern Singleton della GoF in quanto ogni emettitrice
+* deve possedere un'unica istanza del catalogo che contenga tutti gli articoli offerti. 
+* @param catalog				- è una lista di oggetti di tipo TravelDocument
+* 
+*/
 public class TicketCatalog {
 
 	private static List<TravelDocument> catalog;
@@ -23,6 +24,12 @@ public class TicketCatalog {
 		loadTravelDocuments();
 	}
 	
+	/**
+	 * Metodo statico previsto dal pattern Singleton. Dovendo esistere un'unica istanza di questa classe,
+	 * il metodo ne crea una e la restituisce nel caso non esista, oppure restituisce quella esistente 
+	 * nel caso in cui ci sia già un'istanza.
+	 * @return TicketCatalog			- restituisce l'unica istanza esistente della classe stessa
+	 */
 	public static TicketCatalog getInstance() {
 		if (instance == null) {
 			instance = new TicketCatalog();
@@ -34,12 +41,14 @@ public class TicketCatalog {
 	 * Metodo per ottenere il titolo di viaggio opportuno a seconda del tipo richiesto
 	 * @param type 				- valore int che indica il tipo di biglietto
 	 * @return TravelDocument	- l'oggetto di tipo TravelDocument che ha come tipo il valore specificato
+	 * @throws TicketTypeNotExistingException	se il sistema non prevede alcun titolo di viaggio del tipo
+	 * 										    richiesto
 	 */
 	public TravelDocument getSelectedTravelDocument(int type) throws TicketTypeNotExistingException {
 		for(TravelDocument ticket: catalog) {
 			if(ticket.getType() == type) 
 				return ticket;
-		} throw new TicketTypeNotExistingException(); //se non viene trovato alcun elemento corrispondente ritorna null
+		} throw new TicketTypeNotExistingException(); 
 	}
 	
 	/**

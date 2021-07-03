@@ -44,7 +44,8 @@ public class TicketMachineUI {
 	 * 					  prodotti acquistabili
 	 * @throws TicketTypeNotExistingException		se il tipo inserito dall'utente non corrisponde ad uno degli articoli
 	 * 												acquistabili
-	 * @throws NotEnoughAccessesException 
+	 * @throws NotEnoughAccessesException 			se il titolo di viaggio che si sta cercando di convalidare ha esaurito
+	 * 												gli accessi consentiti
 	 * @throws PaymentNotCompletedException			se la procedura di pagamento non è andata a buon fine
 	 */
 	public void start(TicketCatalog cat) throws TicketTypeNotExistingException, NotEnoughAccessesException {

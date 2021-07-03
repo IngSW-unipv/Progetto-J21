@@ -6,6 +6,7 @@ package electronicticketingsystem.model.util.exceptions;
  * @param errorMessage    -  stringa costante che indica il motivo della generazione dell'eccezione
  *
  */
+@SuppressWarnings("serial")
 public class TicketTypeNotExistingException extends Exception {
 
 	private final static String errorMessage = "The ticket type you selected is not valid!";
