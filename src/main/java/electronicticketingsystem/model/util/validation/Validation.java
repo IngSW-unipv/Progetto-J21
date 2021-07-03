@@ -2,6 +2,7 @@ package electronicticketingsystem.model.util.validation;
 
 import java.time.LocalTime;
 
+import electronicticketingsystem.model.util.exceptions.NotEnoughAccessesException;
 import electronicticketingsystem.model.util.exceptions.TicketNotFoundException;
 import electronicticketingsystem.model.util.sale.SaleLineItem;
 import electronicticketingsystem.model.util.sale.SoldRegister;
@@ -21,11 +22,13 @@ public class Validation {
 	 * @param id				- id del biglietto da convalidare
 	 * @throws TicketNotFoundException	- se l'id inserito non corrisponde a nessuno degli id dei biglietti presenti nel
 	 * 									  SoldRegister
+	 * @throws NotEnoughAccessesException 
 	 */
-	public Validation(String id) throws TicketNotFoundException {
+	public Validation(String id) throws TicketNotFoundException, NotEnoughAccessesException {
 		SoldRegister sr=SoldRegister.getInstance();
 		SaleLineItem ticket = sr.returnTicket(id);
 		if (ticket != null) {
+			if(ticket.getNumberAccesses()==0) throw new NotEnoughAccessesException();
 			this.id = ticket.getTicketID();
 			this.expirationTime = LocalTime.now().plusHours(ticket.getTime());
 			ticket.setOneAccessLess();
