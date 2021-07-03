@@ -44,9 +44,10 @@ public class TicketMachineUI {
 	 * 					  prodotti acquistabili
 	 * @throws TicketTypeNotExistingException		se il tipo inserito dall'utente non corrisponde ad uno degli articoli
 	 * 												acquistabili
+	 * @throws NotEnoughAccessesException 
 	 * @throws PaymentNotCompletedException			se la procedura di pagamento non è andata a buon fine
 	 */
-	public void start(TicketCatalog cat) throws TicketTypeNotExistingException {
+	public void start(TicketCatalog cat) throws TicketTypeNotExistingException, NotEnoughAccessesException {
 		
 		do {
 			System.out.println("1 - Validation\n2 - Purchase\n9 - End");

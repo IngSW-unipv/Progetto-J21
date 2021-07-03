@@ -4,6 +4,7 @@ import java.util.*;
 
 import electronicticketingsystem.model.util.exceptions.InvalidAmountException;
 import electronicticketingsystem.model.util.exceptions.InvalidQuantityException;
+import electronicticketingsystem.model.util.exceptions.NotEnoughAccessesException;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.exceptions.TicketNotFoundException;
 import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
@@ -111,8 +112,9 @@ public class TicketMachine {
 	 * a video una lista degli ID dei biglietti convalidati.
 	 * @param ticketID (String)		- ID del biglietto da convalidare
 	 * @throws TicketNotFoundException	nel caso in cui l'ID inserito non sia valido
+	 * @throws NotEnoughAccessesException 
 	 */
-	public void validation(String ticketID) throws TicketNotFoundException {
+	public void validation(String ticketID) throws TicketNotFoundException, NotEnoughAccessesException {
 		vr = ValidationRegister.getInstance();
 		vr.addToRegister(new Validation(ticketID));
 		vr.printValidationRegister();

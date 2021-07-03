@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.rythmengine.Rythm;
 
+import electronicticketingsystem.model.util.exceptions.NotEnoughAccessesException;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.exceptions.TicketNotFoundException;
 import electronicticketingsystem.model.util.payment.*;
@@ -56,6 +57,9 @@ public class WelcomeServlet extends HttpServlet{
 			paymentFailed(req,resp);
 		} catch (TicketNotFoundException e) {
 			validationFailed(req,resp);
+		} catch (NotEnoughAccessesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}
@@ -77,6 +81,9 @@ public class WelcomeServlet extends HttpServlet{
 			paymentFailed(req,resp);
 		} catch (TicketNotFoundException e) {
 			validationFailed(req,resp);
+		} catch (NotEnoughAccessesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}
@@ -89,8 +96,9 @@ public class WelcomeServlet extends HttpServlet{
 	 * @throws IOException			se si è verificato un problema nell'I/O
 	 * @throws PaymentNotCompletedException		nel caso in cui una procedura di pagamento non sia andata a buon fine
 	 * @throws TicketNotFoundException			nel caso in cui l'ID richiesto non corrisponda a nessun biglietto venduto
+	 * @throws NotEnoughAccessesException 
 	 */
-	protected void requests(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException, PaymentNotCompletedException, TicketNotFoundException {
+	protected void requests(HttpServletRequest req,HttpServletResponse resp)throws ServletException, IOException, PaymentNotCompletedException, TicketNotFoundException, NotEnoughAccessesException {
 		if(req.getPathInfo().equals("/")) {
 			home(req,resp);}
 		if(req.getPathInfo().equals("/purchase") )
@@ -241,8 +249,9 @@ public class WelcomeServlet extends HttpServlet{
 	 * @throws ServletException		se la servlet ha incontrato problemi
 	 * @throws IOException			se si è verificato un problema nell'I/O
 	 * @throws TicketNotFoundException		se l'ID inserito non corrisponde a nessuno dei titoli di viaggio venduti
+	 * @throws NotEnoughAccessesException 
 	 */
-	protected void expiration(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException, TicketNotFoundException {
+	protected void expiration(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException, TicketNotFoundException, NotEnoughAccessesException {
 		String id = req.getParameter("id");
 		v = new Validation(id);
 		ValidationRegister.getInstance().addToRegister(v);
