@@ -1,4 +1,4 @@
-package electronicticketingsystem.view;
+package electronicticketingsystem.view.ui;
 
 import java.util.Scanner;
 

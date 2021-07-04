@@ -1,4 +1,4 @@
-package electronicticketingsystem.model.server;
+package electronicticketingsystem.view.server;
 
 import java.util.*;
 

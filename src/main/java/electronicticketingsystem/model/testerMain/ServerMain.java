@@ -1,7 +1,6 @@
 package electronicticketingsystem.model.testerMain;
 
-import electronicticketingsystem.model.server.ApplicationServer;
-import electronicticketingsystem.model.server.WelcomeServlet;
+import electronicticketingsystem.view.server.*;
 
 /**
  * Classe che contiene il metodo main per provare il funzionamento dello shop online. Il
