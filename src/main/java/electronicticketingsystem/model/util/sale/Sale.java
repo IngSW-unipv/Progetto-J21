@@ -141,5 +141,13 @@ public class Sale {
 	public Cash getChange() {
 		return ((CashPayment)p).getChange();
 	}
+	
+	/**
+	 * Metodo get per visualizzare se la vendita è conclusa (return true) oppure no (return false)
+	 * @return boolean			- restituisce il valore booleano completed che indica lo stato della vendita
+	 */
+	public boolean getCompleted() {
+		return this.completed;
+	}
 
 }

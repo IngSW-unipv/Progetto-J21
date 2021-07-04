@@ -70,10 +70,29 @@ public class SaleTest {
 	 * 												o uguale a 0.0)
 	 */
 	@Test
-	public void test() throws TicketTypeNotExistingException, InvalidQuantityException, PaymentNotCompletedException, InvalidAmountException {
+	public void setCompletedTest() throws TicketTypeNotExistingException, InvalidQuantityException, PaymentNotCompletedException, InvalidAmountException {
 		s.enterItem(1, 1);
-		Cash c=new Cash(0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0);
+		Cash c=new Cash(1.4);
 		s.makeCashPayment(c.getAmount());
+		s.setCompleted();
+		assertTrue(s.getCompleted());
+	}
+	
+	/**
+	 * Test per verificare che venga sollevata l'eccezione PaymentNotCompletedException quando un pagamento 
+	 * non va a buon fine
+	 * 
+	 * @throws InvalidQuantityException 			se si richiede una quantità non valida
+	 * @throws TicketTypeNotExistingException 		se si richiede un tipo inesistente
+	 * @throws InvalidAmountException 				se il totale dovuto calcolato è non valido (minore
+	 * 												o uguale a 0.0)
+	 * @throws PaymentNotCompletedException 		se il pagamento non può andare a buon fine (denaro
+	 * 												inserito dall'utente non sufficiente)
+	 */
+	@Test(expected=PaymentNotCompletedException.class)
+	public void paymentNotCompletedTest() throws TicketTypeNotExistingException, InvalidQuantityException, InvalidAmountException, PaymentNotCompletedException {
+		s.enterItem(1, 1);
+		s.makeCashPayment(0.0);
 		s.setCompleted();
 	}
 	
