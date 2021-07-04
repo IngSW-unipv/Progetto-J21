@@ -75,7 +75,7 @@ public class SaleTest {
 		Cash c=new Cash(1.4);
 		s.makeCashPayment(c.getAmount());
 		s.setCompleted();
-		assertTrue(s.getCompleted());
+		assertTrue(s.isCompleted());
 	}
 	
 	/**

@@ -24,7 +24,6 @@ import electronicticketingsystem.model.util.payment.Payment;
  * 							      completate, ovvero delle quali è stato ricevuto il pagamento
  * 
  */
-@SuppressWarnings("unused")
 public class Sale {
 	private final int TYPE_ACCEPTED=3;
 	private boolean completed;
@@ -146,7 +145,7 @@ public class Sale {
 	 * Metodo get per visualizzare se la vendita è conclusa (return true) oppure no (return false)
 	 * @return boolean			- restituisce il valore booleano completed che indica lo stato della vendita
 	 */
-	public boolean getCompleted() {
+	public boolean isCompleted() {
 		return this.completed;
 	}
 
