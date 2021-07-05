@@ -107,8 +107,8 @@ public class SaleTest {
 	 * 
 	 * @throws TicketTypeNotExistingException		se si richiede un tipo inesistente
 	 * @throws InvalidQuantityException				se si richiede una quantità non valida
-	 * @throws PaymentNotCompletedException			se il pagamento non può andare a buon fine (denaro
-	 * 												inserito dall'utente non sufficiente)
+	 * @throws PaymentNotCompletedException			se il pagamento non può andare a buon fine (dati della
+	 * 												carta di credito non validi)
 	 * @throws InvalidAmountException				se il totale dovuto calcolato è non valido (minore
 	 * 												o uguale a 0.0)
 	 */
