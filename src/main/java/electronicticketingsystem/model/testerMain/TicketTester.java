@@ -5,8 +5,8 @@ import java.util.Scanner;
 import electronicticketingsystem.model.util.exceptions.NotEnoughAccessesException;
 import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
 import electronicticketingsystem.model.util.ticket.*;
-import electronicticketingsystem.view.TicketInspectorUI;
-import electronicticketingsystem.view.TicketMachineUI;
+import electronicticketingsystem.view.ui.TicketInspectorUI;
+import electronicticketingsystem.view.ui.TicketMachineUI;
 
 /**
  * Classe di test del sistema che contiene il metodo main per provare il funzionamento dell'emettitrice.
