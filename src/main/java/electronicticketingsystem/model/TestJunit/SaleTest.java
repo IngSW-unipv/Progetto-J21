@@ -2,12 +2,15 @@ package electronicticketingsystem.model.TestJunit;
 
 import static org.junit.Assert.assertTrue;
 
+import java.time.YearMonth;
+
 import org.junit.Test;
 
 import electronicticketingsystem.model.util.exceptions.InvalidAmountException;
 import electronicticketingsystem.model.util.exceptions.InvalidQuantityException;
 import electronicticketingsystem.model.util.exceptions.PaymentNotCompletedException;
 import electronicticketingsystem.model.util.exceptions.TicketTypeNotExistingException;
+import electronicticketingsystem.model.util.payment.CreditCard;
 import electronicticketingsystem.model.util.sale.Cash;
 import electronicticketingsystem.model.util.sale.Sale;
 import electronicticketingsystem.model.util.ticket.SingleRideTicket;
@@ -62,6 +65,7 @@ public class SaleTest {
 	/**
 	 * Test più generale della classe Sale che segue una procedura di acquisto dall'inserimento di tipo e 
 	 * quantità fino al pagamento in contanti
+	 * 
 	 * @throws TicketTypeNotExistingException		se si richiede un tipo inesistente
 	 * @throws InvalidQuantityException				se si richiede una quantità non valida
 	 * @throws PaymentNotCompletedException			se il pagamento non può andare a buon fine (denaro
@@ -95,6 +99,27 @@ public class SaleTest {
 		s.makeCashPayment(0.0);
 		s.setCompleted();
 	}
+	
+	/**
+	 * Test generale della classe Sale che simula l'acquisto di un SingleRideTicket con pagamento attraverso una carta di
+	 * credito generata appositamente
+	 * 
+	 * 
+	 * @throws TicketTypeNotExistingException		se si richiede un tipo inesistente
+	 * @throws InvalidQuantityException				se si richiede una quantità non valida
+	 * @throws PaymentNotCompletedException			se il pagamento non può andare a buon fine (denaro
+	 * 												inserito dall'utente non sufficiente)
+	 * @throws InvalidAmountException				se il totale dovuto calcolato è non valido (minore
+	 * 												o uguale a 0.0)
+	 */
+	@Test
+	public void creditCardPaymentTest() throws TicketTypeNotExistingException, InvalidQuantityException, InvalidAmountException, PaymentNotCompletedException {
+		s.enterItem(1, 1);
+		CreditCard cc=new CreditCard("1234567890123456", YearMonth.parse("2021-12"), "111");
+		s.makeCreditCardPayment(cc);
+		s.setCompleted();
+		
+	} 
 	
 	
 
