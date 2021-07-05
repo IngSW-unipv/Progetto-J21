@@ -12,6 +12,6 @@ public class BusPass extends TravelDocument {
 	 * essere usato durante l'intero arco della giornata.
 	 */
 	public BusPass() {
-		super(3, "Bus Pass", 12.00, 24);
+		super(3, "Bus Pass", 12.00, 24*30);
 	}
 }
