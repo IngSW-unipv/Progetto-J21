@@ -84,7 +84,7 @@ public class DataBase {
 		 * @return true 			- se il titolo di viaggio è valido, false altrimenti
 		 */
 		public boolean addInspection(String TicketID, String idInspector)  {
-			query = "Select * from validatedticket where TickID = '" + TicketID + "'" ;
+			query = "Select * from validatedticket where TickID = '" + TicketID + "' && ExpTime > current_time()" ;
 			try {
 			Connection con = DriverManager.getConnection(url, name, pass);
 			Statement st = con.createStatement();
