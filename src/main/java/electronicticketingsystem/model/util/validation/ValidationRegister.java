@@ -37,7 +37,7 @@ public class ValidationRegister {
 	
 	
 	/**
-	 * Metodo che aggiunge una certa convalida al registro
+	 * Metodo che aggiunge una certa convalida al registro e alla table relativa del database
 	 * @param v							- l'oggetto della classe Validation da aggiungere
 	 */
 	public void addToRegister(Validation v) {

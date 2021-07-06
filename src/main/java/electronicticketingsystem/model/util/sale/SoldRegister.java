@@ -38,7 +38,7 @@ public class SoldRegister {
 	}
 	
 	/**
-	 * Metodo che aggiunge un certo articolo della vendita al registro
+	 * Metodo che aggiunge un certo articolo della vendita al registro e alla table relativa del databese
 	 * @param ticket				- l'oggetto della classe SaleLineItem da aggiungere
 	 */
 	public void addToRegister(SaleLineItem ticket) {

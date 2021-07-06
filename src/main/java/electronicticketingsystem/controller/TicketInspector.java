@@ -1,9 +1,5 @@
 package electronicticketingsystem.controller;
 
-import java.time.LocalTime;
-import electronicticketingsystem.model.util.validation.Validation;
-import electronicticketingsystem.model.util.validation.ValidationRegister;
-
 
 /**
  * Classe che descrive un controllore.
@@ -35,9 +31,8 @@ public class TicketInspector {
 	
 	/**
 	 * Metodo che permette di controllare che la convalida di un biglietto sia valida.
-	 * @param idTicket 		- stringa che indica l'ID del biglietto di cui verificare la validità 
-	 * @return true 		- se la scadenza della corsa è successiva al tempo attuale, cioè se il biglietto
-	 * 						  è valido
+	 * @param TicketID 		- stringa che indica l'ID del biglietto di cui verificare la validità 
+	 * @return true 		- se il biglietto è valido, false altrimenti
 	 */
 	public boolean inspection(String TicketID) {
 		PersistenceFacade pf = PersistenceFacade.getInstance();
