@@ -2,6 +2,7 @@ package electronicticketingsystem.model.util.validation;
 
 import java.util.ArrayList;
 import java.util.List;
+import electronicticketingsystem.controller.PersistenceFacade;
 
 /**
  * Classe che descrive il registro delle convalide.
@@ -41,6 +42,8 @@ public class ValidationRegister {
 	 */
 	public void addToRegister(Validation v) {
 		stampedTickets.add(v); //aggiungi alla lista tutte le convalide	
+		PersistenceFacade pf = PersistenceFacade.getInstance();
+		pf.addValidation(v);
 	}
 	
 	/**

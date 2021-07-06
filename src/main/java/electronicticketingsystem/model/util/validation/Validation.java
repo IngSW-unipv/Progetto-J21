@@ -6,6 +6,7 @@ import electronicticketingsystem.model.util.exceptions.NotEnoughAccessesExceptio
 import electronicticketingsystem.model.util.exceptions.TicketNotFoundException;
 import electronicticketingsystem.model.util.sale.SaleLineItem;
 import electronicticketingsystem.model.util.sale.SoldRegister;
+import electronicticketingsystem.controller.PersistenceFacade;
 
 /**
  * Classe che descrive una convalida.

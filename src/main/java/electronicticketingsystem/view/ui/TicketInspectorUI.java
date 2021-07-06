@@ -1,7 +1,7 @@
 package electronicticketingsystem.view.ui;
 
 import java.util.Scanner;
-
+import electronicticketingsystem.controller.PersistenceFacade;
 import electronicticketingsystem.controller.TicketInspector;
 
 /**
@@ -28,17 +28,22 @@ public class TicketInspectorUI {
 	 * permettere l'interazione con il controllore.
 	 */
 	public void start() {
+		PersistenceFacade pf = PersistenceFacade.getInstance();
 		System.out.println("Please submit your Ticket Inspector Id: ");
 		String inspectorId = s.next();
 		System.out.println("Please submit your Password: ");
 		String psw = s.next();
-		TicketInspector ti = new TicketInspector(inspectorId,psw);
-		System.out.println("Enter the ID of the ticket to be checked: ");
-		String ticketId = s.next();
-		if(ti.inspection(ticketId)==false) 
-			System.out.println("This travel document isn't valid!");
-		else 
-			System.out.println("The travel document with ID "+ticketId+" is valid.");
+		if(pf.login(inspectorId, psw) == true) {
+			TicketInspector ti = new TicketInspector(inspectorId,psw);
+			System.out.println("Enter the ID of the ticket to be checked: ");
+			String ticketId = s.next();
+			if(ti.inspection(ticketId)==false) 
+				System.out.println("This travel document isn't valid!");
+			else 
+				System.out.println("The travel document with ID "+ticketId+" is valid.");
+		}
+
 	}
+
 
 }

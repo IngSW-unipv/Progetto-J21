@@ -2,6 +2,7 @@ package electronicticketingsystem.model.util.sale;
 
 import java.util.ArrayList;
 import java.util.List;
+import electronicticketingsystem.controller.PersistenceFacade;
 
 /**
 * Classe che descrive il registro degli articoli venduti.
@@ -42,6 +43,8 @@ public class SoldRegister {
 	 */
 	public void addToRegister(SaleLineItem ticket) {
 		payedTickets.add(ticket);
+		PersistenceFacade pf = PersistenceFacade.getInstance();
+		pf.addTicket(ticket);
 	}
 	
 	/**

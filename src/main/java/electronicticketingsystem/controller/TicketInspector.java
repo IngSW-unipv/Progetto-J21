@@ -39,13 +39,9 @@ public class TicketInspector {
 	 * @return true 		- se la scadenza della corsa è successiva al tempo attuale, cioè se il biglietto
 	 * 						  è valido
 	 */
-	public boolean inspection(String TicketID)  {
-		ValidationRegister vr=ValidationRegister.getInstance();
-		Validation ticket=vr.findValidation(TicketID); 
-		if (ticket.equals(null)) 
-			return false;
-		else 
-			return ticket.getExpirationTime().isAfter(LocalTime.now());
+	public boolean inspection(String TicketID) {
+		PersistenceFacade pf = PersistenceFacade.getInstance();
+		return pf.Inspection(TicketID, idInspector);
 	}
 	
 	/**
