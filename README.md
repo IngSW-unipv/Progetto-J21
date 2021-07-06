@@ -13,6 +13,10 @@ git clone [link appena copiato]
 ```
 Importare il progetto nell'IDE prescelto; se è stato scelto Eclipse, selezionare l'opzione _"Import..."_ dal menù a tendina _"File"_ in alto a sinistra e selezionare la directory radice del progetto: è ora possibile eseguire il programma.
 
+### 1.1 Preparazione del database
+Per implementare le operazioni di persistenza è necessario impostare un database in ambiente MySQL. Dopo aver scaricato il workbench(https://www.mysql.com/) è necessario creare una nuova connessione locale utilizzando la porta standard 3306. Impostare username=admin, password=admin; dopo aver concesso i privilegi di DBMS eseguire la query  che permetterà la creazione e il riempimento del database di riferimento.
+Non è necessario modificare nessun parametro all'interno del progetto.
+
 ### 2. Esecuzione del progetto
 > 2.1 Esecuzione tramite interfaccia testuale
 
